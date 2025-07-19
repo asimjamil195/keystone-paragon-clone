@@ -19,17 +19,17 @@ const Header = () => {
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center text-sm">
             <div className="flex items-center space-x-6">
-              <a href="tel:+92-300-1234567" className="flex items-center hover:text-accent transition-colors">
+              <a href="tel:+92-327-7787888" className="flex items-center hover:text-accent transition-colors">
                 <Phone className="w-4 h-4 mr-2" />
-                +92 300 1234567
+                +92 327 7787888
               </a>
-              <a href="mailto:info@keystoneconsultancy.com" className="flex items-center hover:text-accent transition-colors">
+              <a href="mailto:keystoneconsultants786@gmail.com" className="flex items-center hover:text-accent transition-colors">
                 <Mail className="w-4 h-4 mr-2" />
-                info@keystoneconsultancy.com
+                keystoneconsultants786@gmail.com
               </a>
             </div>
             <div className="hidden md:block">
-              <span className="text-accent font-semibold">Your Success, Our Expertise</span>
+              <span className="text-accent font-semibold">Educational Consultant</span>
             </div>
           </div>
         </div>
@@ -42,7 +42,7 @@ const Header = () => {
             {/* Logo */}
             <div className="flex items-center">
               <div className="text-2xl font-bold gradient-primary bg-clip-text text-transparent">
-                Keystone Consultancy
+                Keystone Consultants
               </div>
             </div>
 

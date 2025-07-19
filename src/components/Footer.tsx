@@ -49,25 +49,24 @@ const Footer = () => {
           {/* Company Info */}
           <div className="lg:col-span-1">
             <div className="text-2xl font-bold mb-4 text-accent">
-              Keystone Consultancy
+              Keystone Consultants
             </div>
             <p className="text-primary-foreground/80 mb-6 leading-relaxed">
-              Your trusted partner in business transformation. We turn challenges 
-              into opportunities and visions into measurable results.
+              Empowering students to achieve global success through personalized education guidance.
             </p>
             
             <div className="space-y-3">
               <div className="flex items-center text-sm">
                 <MapPin className="w-4 h-4 mr-3 text-accent" />
-                <span>123 Business District, Karachi, Pakistan</span>
+                <span>Lahore, Lahore, Pakistan</span>
               </div>
               <div className="flex items-center text-sm">
                 <Phone className="w-4 h-4 mr-3 text-accent" />
-                <span>+92 300 1234567</span>
+                <span>+92 327 7787888</span>
               </div>
               <div className="flex items-center text-sm">
                 <Mail className="w-4 h-4 mr-3 text-accent" />
-                <span>info@keystoneconsultancy.com</span>
+                <span>keystoneconsultants786@gmail.com</span>
               </div>
             </div>
           </div>
@@ -145,7 +144,7 @@ const Footer = () => {
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-sm text-primary-foreground/80 mb-4 md:mb-0">
-              © 2024 Keystone Consultancy. All rights reserved.
+              © 2024 Keystone Consultants. All rights reserved.
             </div>
             
             <div className="flex items-center space-x-6">

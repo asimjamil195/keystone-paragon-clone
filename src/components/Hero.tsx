@@ -4,10 +4,10 @@ import heroImage from "@/assets/hero-consultancy.jpg";
 
 const Hero = () => {
   const benefits = [
-    "Expert Strategic Guidance",
-    "Proven Track Record",
-    "Tailored Solutions",
-    "24/7 Support"
+    "IELTS Preparation",
+    "Student Visa",
+    "Tailored Solutions for students",
+    "Trusted By hundreds"
   ];
 
   return (
@@ -27,20 +27,18 @@ const Hero = () => {
         <div className="max-w-4xl">
           <div className="animate-fade-up">
             <span className="inline-block px-4 py-2 bg-accent/10 text-accent rounded-full text-sm font-semibold mb-6">
-              Premium Business Consultancy
+              Educational Consultant
             </span>
             
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-              Transform Your
               <span className="block gradient-accent bg-clip-text text-transparent">
-                Business Vision
+                DREAM BIG,
               </span>
-              Into Reality
+              STUDY ABROAD
             </h1>
             
             <p className="text-xl text-white/90 mb-8 max-w-2xl leading-relaxed">
-              At Keystone Consultancy, we provide strategic guidance and innovative solutions 
-              that drive sustainable growth and unlock your business potential.
+              Empowering students to achieve global success through personalized education guidance.
             </p>
 
             {/* Benefits Grid */}
