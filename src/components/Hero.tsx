@@ -68,7 +68,7 @@ const Hero = () => {
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-accent/60 text-white hover:bg-accent/20 hover:border-accent backdrop-blur-sm px-8 py-6 text-lg transition-all duration-300"
+                className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm px-8 py-6 text-lg transition-all duration-300"
               >
                 Learn More
               </Button>
