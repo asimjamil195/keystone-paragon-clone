@@ -8,9 +8,10 @@ const Header = () => {
 
   const navigation = [
     { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
+    { name: "About Us", href: "/about" },
     { name: "Services", href: "/services" },
-    { name: "Contact", href: "/contact" },
+    { name: "Apply Now", href: "#apply" },
+    { name: "Contact Us", href: "/contact" },
   ];
 
   return (
@@ -63,7 +64,7 @@ const Header = () => {
             {/* CTA Button */}
             <div className="hidden md:block">
               <Button className="gradient-primary hover:shadow-glow transition-all duration-300">
-                Get Consultation
+                Book Free Consultation
               </Button>
             </div>
 
@@ -91,7 +92,7 @@ const Header = () => {
                   </Link>
                 ))}
                 <Button className="gradient-primary mt-4 w-fit">
-                  Get Consultation
+                  Book Free Consultation
                 </Button>
               </nav>
             </div>

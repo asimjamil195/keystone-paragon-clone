@@ -3,8 +3,6 @@ import {
   Mail, 
   Phone, 
   MapPin, 
-  Linkedin, 
-  Twitter, 
   Facebook,
   ArrowUp
 } from "lucide-react";
@@ -15,29 +13,12 @@ const Footer = () => {
   };
 
   const footerLinks = {
-    services: [
-      "Strategic Planning",
-      "Financial Advisory", 
-      "Leadership Development",
-      "Operations Excellence",
-      "Digital Transformation",
-      "Innovation Consulting"
-    ],
-    company: [
-      "About Us",
-      "Our Team",
-      "Careers",
-      "News & Insights",
-      "Case Studies",
-      "Contact"
-    ],
-    resources: [
-      "Blog",
-      "Whitepapers",
-      "Webinars",
-      "Industry Reports",
-      "Best Practices",
-      "FAQ"
+    quickLinks: [
+      { name: "Home", href: "/" },
+      { name: "About Us", href: "/about" },
+      { name: "Services", href: "/services" },
+      { name: "Apply Now", href: "#apply" },
+      { name: "Contact Us", href: "/contact" }
     ]
   };
 
@@ -47,22 +28,22 @@ const Footer = () => {
       <div className="container mx-auto px-4 py-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
-          <div className="lg:col-span-1">
-            <div className="text-2xl font-bold mb-4 text-accent">
+          <div className="lg:col-span-2">
+            <div className="text-3xl font-bold mb-4 gradient-accent bg-clip-text text-transparent">
               Keystone Consultants
             </div>
             <p className="text-primary-foreground/80 mb-6 leading-relaxed">
-              Empowering students to achieve global success through personalized education guidance.
+              Your trusted partner for study-abroad planning and admissions. Empowering students to achieve global success through personalized education guidance.
             </p>
             
             <div className="space-y-3">
               <div className="flex items-center text-sm">
                 <MapPin className="w-4 h-4 mr-3 text-accent" />
-                <span>Lahore, Lahore, Pakistan</span>
+                <span>Lahore, Punjab, Pakistan</span>
               </div>
               <div className="flex items-center text-sm">
                 <Phone className="w-4 h-4 mr-3 text-accent" />
-                <span>+92 327 7787888</span>
+                <span>+92 327 778 7888</span>
               </div>
               <div className="flex items-center text-sm">
                 <Mail className="w-4 h-4 mr-3 text-accent" />
@@ -71,68 +52,39 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Services */}
+          {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-accent">Our Services</h3>
+            <h3 className="text-lg font-semibold mb-4 text-accent">Quick Links</h3>
             <ul className="space-y-2">
-              {footerLinks.services.map((service) => (
-                <li key={service}>
+              {footerLinks.quickLinks.map((link) => (
+                <li key={link.name}>
                   <a 
-                    href="#services" 
+                    href={link.href} 
                     className="text-primary-foreground/80 hover:text-accent transition-colors text-sm"
                   >
-                    {service}
+                    {link.name}
                   </a>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Company */}
+          {/* Social Media */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-accent">Company</h3>
-            <ul className="space-y-2">
-              {footerLinks.company.map((item) => (
-                <li key={item}>
-                  <a 
-                    href="#" 
-                    className="text-primary-foreground/80 hover:text-accent transition-colors text-sm"
-                  >
-                    {item}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Newsletter */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4 text-accent">Stay Connected</h3>
+            <h3 className="text-lg font-semibold mb-4 text-accent">Follow Us</h3>
             <p className="text-primary-foreground/80 text-sm mb-4">
-              Subscribe to our newsletter for insights and industry updates.
+              Stay connected for updates and success stories.
             </p>
             
-            <div className="space-y-3">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="w-full px-4 py-2 rounded-lg bg-primary-light/20 border border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/60 focus:outline-none focus:border-accent"
-              />
-              <Button className="w-full bg-accent hover:bg-accent-light text-accent-foreground">
-                Subscribe
-              </Button>
-            </div>
-
             {/* Social Links */}
-            <div className="flex space-x-4 mt-6">
-              <a href="#" className="w-8 h-8 bg-primary-light/20 rounded-lg flex items-center justify-center hover:bg-accent transition-colors">
-                <Linkedin className="w-4 h-4" />
-              </a>
-              <a href="#" className="w-8 h-8 bg-primary-light/20 rounded-lg flex items-center justify-center hover:bg-accent transition-colors">
-                <Twitter className="w-4 h-4" />
-              </a>
-              <a href="#" className="w-8 h-8 bg-primary-light/20 rounded-lg flex items-center justify-center hover:bg-accent transition-colors">
-                <Facebook className="w-4 h-4" />
+            <div className="flex space-x-4">
+              <a 
+                href="https://facebook.com/keystoneconsultants" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 bg-primary-light/20 rounded-lg flex items-center justify-center hover:bg-accent transition-colors"
+              >
+                <Facebook className="w-5 h-5" />
               </a>
             </div>
           </div>

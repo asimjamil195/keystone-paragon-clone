@@ -15,10 +15,10 @@
     --popover: 0 0% 100%;
     --popover-foreground: 220 26% 14%;
 
-    --primary: 220 92% 29%;
+    --primary: 220 85% 45%;
     --primary-foreground: 0 0% 98%;
-    --primary-light: 220 78% 45%;
-    --primary-glow: 220 65% 60%;
+    --primary-light: 220 78% 60%;
+    --primary-glow: 220 65% 75%;
 
     --secondary: 220 14% 96%;
     --secondary-foreground: 220 26% 14%;
@@ -26,9 +26,9 @@
     --muted: 220 14% 96%;
     --muted-foreground: 220 8.9% 46.1%;
 
-    --accent: 38 92% 50%;
-    --accent-foreground: 0 0% 98%;
-    --accent-light: 43 96% 56%;
+    --accent: 45 85% 50%;
+    --accent-foreground: 220 85% 15%;
+    --accent-light: 45 85% 65%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;

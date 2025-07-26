@@ -19,14 +19,18 @@ const Hero = () => {
             </span>
             
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+              Your Gateway to
               <span className="block gradient-accent bg-clip-text text-transparent">
-                DREAM BIG,
+                Global Education
               </span>
-              STUDY ABROAD
             </h1>
             
-            <p className="text-xl text-white/90 mb-8 max-w-2xl leading-relaxed">
-              Empowering students to achieve global success through personalized education guidance.
+            <p className="text-xl text-white/90 mb-4 max-w-2xl leading-relaxed">
+              Study Abroad | Scholarships | Visa Support | Career Counselling
+            </p>
+            
+            <p className="text-lg text-white/80 mb-8 max-w-2xl leading-relaxed">
+              Empowering students to achieve global success through personalized education guidance and expert support at every step.
             </p>
 
             {/* Benefits Grid */}
@@ -44,11 +48,11 @@ const Hero = () => {
             animationDelay: "0.6s"
           }}>
               <Button size="lg" className="bg-accent hover:bg-accent-light text-accent-foreground font-semibold px-8 py-6 text-lg group transition-all duration-300 hover:shadow-glow">
-                Start Your Journey
+                Book Free Consultation
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
               
-              <Button size="lg" variant="outline" className="border-white/30 text-white backdrop-blur-sm px-8 py-6 transition-all duration-300 bg-amber-950 hover:bg-amber-800 text-xl font-semibold rounded-lg">
+              <Button size="lg" variant="outline" className="border-white/30 text-white backdrop-blur-sm px-8 py-6 transition-all duration-300 hover:bg-white/10">
                 Learn More
               </Button>
             </div>

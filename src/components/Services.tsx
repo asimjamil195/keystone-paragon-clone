@@ -1,52 +1,52 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { 
-  Briefcase, 
-  TrendingUp, 
-  Users, 
-  Settings, 
-  BarChart3, 
-  Lightbulb,
+  UserCheck, 
+  GraduationCap, 
+  FileText, 
+  Award, 
+  BookOpen, 
+  Plane,
   ArrowRight 
 } from "lucide-react";
 
 const Services = () => {
   const services = [
     {
-      icon: Briefcase,
-      title: "Strategic Planning",
-      description: "Comprehensive business strategy development and implementation guidance for sustainable growth.",
-      features: ["Market Analysis", "Competitive Intelligence", "Growth Roadmaps"],
+      icon: UserCheck,
+      title: "Personalized Career & Education Counselling",
+      description: "One-on-one guidance to help you choose the right academic path and career direction.",
+      features: ["Career Assessment", "Goal Setting", "Academic Planning"],
     },
     {
-      icon: TrendingUp,
-      title: "Financial Advisory",
-      description: "Expert financial planning, budgeting, and investment strategies to optimize your resources.",
-      features: ["Financial Modeling", "Investment Analysis", "Risk Management"],
+      icon: GraduationCap,
+      title: "University & Programme Selection",
+      description: "Expert advice on selecting the best universities and programs that match your profile.",
+      features: ["University Matching", "Program Comparison", "Admission Requirements"],
     },
     {
-      icon: Users,
-      title: "Leadership Development",
-      description: "Transform your leadership capabilities and build high-performing teams that drive results.",
-      features: ["Executive Coaching", "Team Building", "Change Management"],
+      icon: FileText,
+      title: "Application Assistance",
+      description: "Complete support with university applications, essays, and documentation.",
+      features: ["Application Forms", "Personal Statements", "Document Review"],
     },
     {
-      icon: Settings,
-      title: "Operations Excellence",
-      description: "Streamline processes and optimize operations for maximum efficiency and productivity.",
-      features: ["Process Optimization", "Quality Management", "Performance Metrics"],
+      icon: Award,
+      title: "Scholarship & Financial Aid Guidance",
+      description: "Help you find and apply for scholarships and financial aid opportunities.",
+      features: ["Scholarship Research", "Application Support", "Financial Planning"],
     },
     {
-      icon: BarChart3,
-      title: "Digital Transformation",
-      description: "Navigate the digital landscape with cutting-edge technology solutions and strategies.",
-      features: ["Technology Integration", "Digital Strategy", "Innovation Labs"],
+      icon: BookOpen,
+      title: "Standardised Test Preparation",
+      description: "Comprehensive preparation for IELTS, SAT, GRE, GMAT and other required tests.",
+      features: ["IELTS Training", "SAT/GRE/GMAT Prep", "Mock Tests"],
     },
     {
-      icon: Lightbulb,
-      title: "Innovation Consulting",
-      description: "Foster innovation culture and develop breakthrough solutions for competitive advantage.",
-      features: ["Innovation Strategy", "Product Development", "Market Entry"],
+      icon: Plane,
+      title: "Visa & Immigration Support",
+      description: "Complete visa application assistance and pre-departure guidance.",
+      features: ["Visa Documentation", "Interview Preparation", "Pre-departure Briefing"],
     },
   ];
 
@@ -59,12 +59,11 @@ const Services = () => {
             Our Services
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Comprehensive Solutions for
-            <span className="gradient-primary bg-clip-text text-transparent"> Every Challenge</span>
+            Our
+            <span className="gradient-primary bg-clip-text text-transparent"> Services</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
-            From strategic planning to digital transformation, we offer a full spectrum of 
-            consultancy services designed to accelerate your business success.
+            Comprehensive support for every step of your study abroad journey, from initial counselling to successful arrival.
           </p>
         </div>
 
@@ -73,11 +72,11 @@ const Services = () => {
           {services.map((service, index) => (
             <Card 
               key={service.title}
-              className="group hover:shadow-elegant transition-all duration-300 animate-scale-in border-border/50 hover:border-primary/20"
+              className="group hover:shadow-elegant transition-all duration-300 animate-scale-in border-border/50 hover:border-primary/20 hover:-translate-y-2"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <CardHeader className="pb-4">
-                <div className="w-14 h-14 gradient-primary rounded-lg flex items-center justify-center mb-4 group-hover:shadow-glow transition-all duration-300">
+                <div className="w-14 h-14 gradient-primary rounded-lg flex items-center justify-center mb-4 group-hover:shadow-glow transition-all duration-300 group-hover:scale-110">
                   <service.icon className="w-7 h-7 text-primary-foreground" />
                 </div>
                 <CardTitle className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
@@ -114,11 +113,10 @@ const Services = () => {
         <div className="text-center animate-fade-up">
           <div className="gradient-hero rounded-2xl p-12 shadow-elegant">
             <h3 className="text-3xl font-bold text-white mb-4">
-              Ready to Transform Your Business?
+              Ready to Start Your Study Abroad Journey?
             </h3>
             <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
-              Let our experts analyze your unique challenges and craft a customized solution 
-              that drives measurable results.
+              Let our expert counsellors guide you through every step of the process and help you achieve your academic dreams.
             </p>
             <Button 
               size="lg"

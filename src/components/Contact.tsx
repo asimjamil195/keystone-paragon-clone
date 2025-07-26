@@ -8,25 +8,26 @@ import {
   Mail, 
   Clock,
   ArrowRight,
-  Send
+  Send,
+  Facebook
 } from "lucide-react";
 
 const Contact = () => {
   const contactInfo = [
     {
-      icon: MapPin,
-      title: "Visit Our Office",
-      details: ["123 Business District", "Karachi, Pakistan"],
-    },
-    {
       icon: Phone,
       title: "Call Us",
-      details: ["+92 300 1234567", "+92 21 1234567"],
+      details: ["+92 327 778 7888"],
     },
     {
       icon: Mail,
       title: "Email Us",
-      details: ["info@keystoneconsultancy.com", "hello@keystoneconsultancy.com"],
+      details: ["keystoneconsultants786@gmail.com"],
+    },
+    {
+      icon: MapPin,
+      title: "Visit Our Office",
+      details: ["Lahore, Punjab, Pakistan"],
     },
     {
       icon: Clock,
@@ -44,12 +45,11 @@ const Contact = () => {
             Get In Touch
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Let's Start Your
-            <span className="gradient-primary bg-clip-text text-transparent"> Success Story</span>
+            Get in
+            <span className="gradient-primary bg-clip-text text-transparent"> Touch</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
-            Ready to take your business to the next level? Contact our expert team today 
-            for a personalized consultation tailored to your unique needs.
+            Ready to start your study abroad journey? Contact our expert team today for personalized guidance and support.
           </p>
         </div>
 
@@ -58,10 +58,10 @@ const Contact = () => {
           <div className="space-y-8 animate-fade-up">
             <div>
               <h3 className="text-2xl font-bold text-foreground mb-6">
-                Connect With Our Experts
+                Connect With Our Education Experts
               </h3>
               <p className="text-muted-foreground mb-8 leading-relaxed">
-                Our team is here to help you navigate challenges and seize opportunities. 
+                Our experienced counsellors are here to guide you through every step of your study abroad journey. 
                 Reach out to us through any of the following channels.
               </p>
             </div>
@@ -70,7 +70,7 @@ const Contact = () => {
               {contactInfo.map((info, index) => (
                 <Card 
                   key={info.title}
-                  className="hover:shadow-card transition-all duration-300 animate-scale-in border-border/50"
+                  className="hover:shadow-card transition-all duration-300 animate-scale-in border-border/50 hover:border-primary/20"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <CardHeader className="pb-3">
@@ -101,9 +101,18 @@ const Contact = () => {
               </Button>
               
               <Button variant="outline" className="w-full hover:bg-primary/5 transition-colors">
-                <Mail className="w-5 h-5 mr-2" />
-                Send Email
+                <Facebook className="w-5 h-5 mr-2" />
+                Visit Facebook Page
               </Button>
+            </div>
+
+            {/* Google Map Placeholder */}
+            <div className="w-full h-64 bg-muted rounded-lg flex items-center justify-center">
+              <div className="text-center">
+                <MapPin className="w-12 h-12 text-muted-foreground mx-auto mb-2" />
+                <p className="text-muted-foreground">Google Map Location</p>
+                <p className="text-sm text-muted-foreground">Lahore, Punjab, Pakistan</p>
+              </div>
             </div>
           </div>
 
@@ -119,37 +128,22 @@ const Contact = () => {
                 </p>
               </CardHeader>
               <CardContent className="space-y-6">
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="text-sm font-medium text-foreground mb-2 block">
-                      First Name
-                    </label>
-                    <Input placeholder="John" className="transition-all duration-300 focus:shadow-card" />
-                  </div>
-                  <div>
-                    <label className="text-sm font-medium text-foreground mb-2 block">
-                      Last Name
-                    </label>
-                    <Input placeholder="Doe" className="transition-all duration-300 focus:shadow-card" />
-                  </div>
+                <div>
+                  <label className="text-sm font-medium text-foreground mb-2 block">
+                    Name
+                  </label>
+                  <Input placeholder="Your full name" className="transition-all duration-300 focus:shadow-card" />
                 </div>
 
                 <div>
                   <label className="text-sm font-medium text-foreground mb-2 block">
-                    Email Address
+                    Email
                   </label>
                   <Input 
                     type="email" 
-                    placeholder="john@company.com" 
+                    placeholder="your.email@example.com" 
                     className="transition-all duration-300 focus:shadow-card" 
                   />
-                </div>
-
-                <div>
-                  <label className="text-sm font-medium text-foreground mb-2 block">
-                    Company
-                  </label>
-                  <Input placeholder="Your Company" className="transition-all duration-300 focus:shadow-card" />
                 </div>
 
                 <div>
@@ -157,7 +151,7 @@ const Contact = () => {
                     Message
                   </label>
                   <Textarea 
-                    placeholder="Tell us about your project and how we can help..."
+                    placeholder="Tell us about your study abroad goals and how we can help..."
                     rows={4}
                     className="transition-all duration-300 focus:shadow-card"
                   />
