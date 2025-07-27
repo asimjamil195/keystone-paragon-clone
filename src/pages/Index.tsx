@@ -4,7 +4,6 @@ import WhyChooseUs from "@/components/WhyChooseUs";
 import StudyDestinations from "@/components/StudyDestinations";
 import Testimonials from "@/components/Testimonials";
 import ApplyNowForm from "@/components/ApplyNowForm";
-import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -16,7 +15,6 @@ const Index = () => {
       <StudyDestinations />
       <Testimonials />
       <ApplyNowForm />
-      <Contact />
       <Footer />
     </div>
   );
