@@ -56,19 +56,23 @@ const StudyDestinations = () => {
           {destinations.map((destination, index) => (
             <Card 
               key={destination.country}
-              className="group hover:shadow-elegant transition-all duration-300 animate-scale-in border-border/50 hover:border-primary/20 cursor-pointer hover:-translate-y-2"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="group hover:shadow-elegant transition-all duration-500 animate-scale-in border-border/50 hover:border-primary/20 cursor-pointer hover:-translate-y-3 overflow-hidden relative"
+              style={{ animationDelay: `${index * 0.12}s` }}
             >
-              <CardContent className="p-8 text-center">
-                <div className="text-6xl mb-4 group-hover:scale-125 transition-transform duration-300">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <CardContent className="p-8 text-center relative z-10">
+                <div className="text-6xl mb-4 group-hover:scale-125 group-hover:rotate-12 transition-transform duration-500 drop-shadow-lg">
                   {destination.flag}
                 </div>
-                <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+                <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300 group-hover:scale-105 transform">
                   {destination.country}
                 </h3>
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-muted-foreground leading-relaxed group-hover:text-foreground/80 transition-colors duration-300">
                   {destination.description}
                 </p>
+                <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <div className="w-12 h-1 bg-gradient-to-r from-primary to-accent mx-auto"></div>
+                </div>
               </CardContent>
             </Card>
           ))}

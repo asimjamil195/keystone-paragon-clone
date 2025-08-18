@@ -35,11 +35,11 @@ const Hero = () => {
 
             {/* Benefits Grid */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
-              {benefits.map((benefit, index) => <div key={benefit} className="flex items-center text-white/90 animate-fade-up" style={{
+              {benefits.map((benefit, index) => <div key={benefit} className="flex items-center text-white/90 animate-fade-up-stagger hover:scale-105 transition-transform duration-300 cursor-pointer group" style={{
               animationDelay: `${0.2 + index * 0.1}s`
             }}>
-                  <CheckCircle className="w-5 h-5 text-accent mr-2 flex-shrink-0" />
-                  <span className="text-sm font-medium">{benefit}</span>
+                  <CheckCircle className="w-5 h-5 text-accent mr-2 flex-shrink-0 group-hover:animate-pulse-glow" />
+                  <span className="text-sm font-medium group-hover:text-white transition-colors">{benefit}</span>
                 </div>)}
             </div>
 
@@ -60,10 +60,16 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Floating Elements */}
+      {/* Enhanced Floating Elements */}
       <div className="absolute top-20 right-20 w-32 h-32 bg-accent/20 rounded-full blur-xl animate-float hidden lg:block"></div>
       <div className="absolute bottom-40 left-20 w-24 h-24 bg-primary-glow/20 rounded-full blur-xl animate-float hidden lg:block" style={{
       animationDelay: "2s"
+    }}></div>
+      <div className="absolute top-1/3 left-1/4 w-16 h-16 bg-primary/10 rounded-full blur-lg animate-float hidden lg:block" style={{
+      animationDelay: "4s"
+    }}></div>
+      <div className="absolute bottom-1/3 right-1/3 w-20 h-20 bg-accent/15 rounded-full blur-lg animate-float hidden lg:block" style={{
+      animationDelay: "1s"
     }}></div>
     </section>;
 };

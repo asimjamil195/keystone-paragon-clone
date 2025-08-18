@@ -42,11 +42,16 @@ const Header = () => {
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center py-4">
             {/* Logo */}
-            <div className="flex items-center">
-              <div className="text-2xl font-bold gradient-primary bg-clip-text text-transparent">
+            <Link to="/" className="flex items-center space-x-3 group">
+              <img 
+                src="/lovable-uploads/217a3d6e-6ae4-4524-a131-32c433063409.png" 
+                alt="Keystone Consultants" 
+                className="h-12 w-auto transition-transform duration-300 group-hover:scale-105"
+              />
+              <div className="text-xl font-bold gradient-primary bg-clip-text text-transparent hidden sm:block">
                 Keystone Consultants
               </div>
-            </div>
+            </Link>
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-8">
