@@ -59,46 +59,49 @@ const ServicesHighlight = () => {
           </p>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid lg:grid-cols-2 gap-12 mb-16">
-          {services.map((service, index) => (
-            <Card 
-              key={service.title}
-              className="group hover:shadow-elegant transition-all duration-700 animate-fade-up-stagger border-border/50 hover:border-primary/30 overflow-hidden bg-background/60 backdrop-blur-sm hover:-translate-y-4"
-              style={{ animationDelay: `${index * 0.2}s` }}
-            >
-              <div className="relative h-48 overflow-hidden">
-                <img 
-                  src={service.image} 
-                  alt={service.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-                <div className={`absolute inset-0 bg-gradient-to-r ${service.color} opacity-80 group-hover:opacity-90 transition-opacity duration-500`}></div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center text-white">
-                    <service.icon className="w-16 h-16 mx-auto mb-4 group-hover:scale-125 group-hover:rotate-6 transition-transform duration-500" />
-                    <h3 className="text-3xl md:text-4xl font-bold mb-2 group-hover:animate-wiggle">
-                      {service.title}
-                    </h3>
+        {/* Services Horizontal Scroll */}
+        <div className="relative overflow-hidden mb-16">
+          <div className="flex animate-scroll-services gap-8">
+            {services.concat(services).map((service, index) => (
+              <div 
+                key={`${service.title}-${index}`}
+                className="min-w-[45%] md:min-w-[45%] group animate-fade-up-stagger"
+                style={{ animationDelay: `${(index % 4) * 0.2}s` }}
+              >
+                <Card className="hover:shadow-elegant transition-all duration-700 border-border/50 hover:border-primary/30 overflow-hidden bg-background/60 backdrop-blur-sm hover:-translate-y-4 h-full">
+                  <div className="relative h-64 overflow-hidden">
+                    <img 
+                      src={service.image} 
+                      alt={service.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <div className={`absolute inset-0 bg-gradient-to-r ${service.color} opacity-80 group-hover:opacity-90 transition-opacity duration-500`}></div>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="text-center text-white px-4">
+                        <service.icon className="w-20 h-20 mx-auto mb-6 group-hover:scale-125 group-hover:rotate-6 transition-transform duration-500" />
+                        <h3 className="text-3xl md:text-5xl font-bold mb-4 group-hover:animate-wiggle leading-tight">
+                          {service.title}
+                        </h3>
+                        <p className="text-lg md:text-xl opacity-90 leading-relaxed">
+                          {service.description}
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                  
+                  <CardContent className="p-8">
+                    <Button 
+                      variant="outline" 
+                      className="group/btn w-full text-lg py-6 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300"
+                    >
+                      Learn More
+                      <ArrowRight className="ml-2 h-5 w-5 group-hover/btn:translate-x-2 transition-transform duration-300" />
+                    </Button>
+                  </CardContent>
+                </Card>
               </div>
-              
-              <CardContent className="p-8">
-                <p className="text-muted-foreground text-lg leading-relaxed mb-6 group-hover:text-foreground/80 transition-colors duration-300">
-                  {service.description}
-                </p>
-                
-                <Button 
-                  variant="outline" 
-                  className="group/btn w-full text-lg py-6 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300"
-                >
-                  Learn More
-                  <ArrowRight className="ml-2 h-5 w-5 group-hover/btn:translate-x-2 transition-transform duration-300" />
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
+            ))}
+          </div>
         </div>
 
         {/* CTA Section */}

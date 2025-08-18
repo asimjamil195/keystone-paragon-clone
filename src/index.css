@@ -196,8 +196,26 @@
     }
   }
 
-  .animate-scroll-left {
-    animation: scroll-left 30s linear infinite;
+  @keyframes scroll-services {
+    0% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(-50%);
+    }
+    75% {
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  .animate-scroll-services {
+    animation: scroll-services 12s ease-in-out infinite;
   }
 
   .animate-float {
