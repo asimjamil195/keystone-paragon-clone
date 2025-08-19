@@ -55,37 +55,96 @@ const ServicesHighlight = () => {
           </p>
         </div>
 
-        {/* Services Horizontal Scroll */}
-        <div className="relative overflow-hidden mb-16">
-          <div className="flex animate-scroll-services gap-8">
-            {services.concat(services).map((service, index) => <div key={`${service.title}-${index}`} className="min-w-[45%] md:min-w-[45%] group animate-fade-up-stagger" style={{
-            animationDelay: `${index % 4 * 0.2}s`
-          }}>
-                <Card className="hover:shadow-elegant transition-all duration-700 border-border/50 hover:border-primary/30 overflow-hidden bg-background/60 backdrop-blur-sm hover:-translate-y-4 h-full">
-                  <div className="relative h-64 overflow-hidden">
-                    <img src={service.image} alt={service.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                    <div className={`absolute inset-0 bg-gradient-to-r ${service.color} opacity-80 group-hover:opacity-90 transition-opacity duration-500`}></div>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="text-center text-white px-4 bg-sky-400">
-                        <service.icon className="w-20 h-20 mx-auto mb-6 group-hover:scale-125 group-hover:rotate-6 transition-transform duration-500" />
-                        <h3 className="text-3xl md:text-5xl font-bold mb-4 group-hover:animate-wiggle leading-tight">
-                          {service.title}
-                        </h3>
-                        <p className="text-lg md:text-xl opacity-90 leading-relaxed">
-                          {service.description}
-                        </p>
+        {/* Animated Pathway */}
+        <div className="relative mb-16 max-w-6xl mx-auto">
+          {/* Pathway SVG Background */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <svg className="w-full h-full" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid meet">
+              <defs>
+                <linearGradient id="pathGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.3" />
+                  <stop offset="50%" stopColor="hsl(var(--accent))" stopOpacity="0.5" />
+                  <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.3" />
+                </linearGradient>
+              </defs>
+              <path
+                d="M 50 200 Q 250 100 400 200 Q 550 300 750 200"
+                stroke="url(#pathGradient)"
+                strokeWidth="4"
+                fill="none"
+                className="animate-pulse-glow"
+              />
+              {/* Animated dots along path */}
+              <circle r="6" fill="hsl(var(--primary))">
+                <animateMotion dur="8s" repeatCount="indefinite">
+                  <mpath href="#pathway" />
+                </animateMotion>
+              </circle>
+              <circle r="4" fill="hsl(var(--accent))" opacity="0.7">
+                <animateMotion dur="6s" repeatCount="indefinite" begin="2s">
+                  <mpath href="#pathway" />
+                </animateMotion>
+              </circle>
+            </svg>
+          </div>
+          
+          {/* Service Steps */}
+          <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-center">
+            {services.map((service, index) => (
+              <div 
+                key={service.title} 
+                className="group animate-fade-up-stagger relative" 
+                style={{animationDelay: `${index * 0.3}s`}}
+              >
+                {/* Connection Line to Next Step */}
+                {index < services.length - 1 && (
+                  <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-0.5 bg-gradient-to-r from-primary/50 to-accent/50 z-0">
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent animate-pulse opacity-60"></div>
+                  </div>
+                )}
+                
+                {/* Service Card */}
+                <Card className="relative overflow-hidden bg-background/80 backdrop-blur-sm border-border/50 hover:border-primary/30 transition-all duration-500 hover:shadow-elegant hover:-translate-y-2 group-hover:scale-105">
+                  <div className="relative p-8 text-center">
+                    {/* Step Number */}
+                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-gradient-to-r from-primary to-accent text-white text-sm font-bold flex items-center justify-center border-4 border-background shadow-lg">
+                      {index + 1}
+                    </div>
+                    
+                    {/* Icon with animated background */}
+                    <div className="relative mb-6 mt-4">
+                      <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${service.color} opacity-10 group-hover:opacity-20 transition-opacity duration-500 blur-xl`}></div>
+                      <div className="relative w-20 h-20 mx-auto rounded-full bg-gradient-to-r from-primary/10 to-accent/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                        <service.icon className="w-10 h-10 text-primary group-hover:text-accent transition-colors duration-500" />
                       </div>
                     </div>
+                    
+                    {/* Title */}
+                    <h3 className="text-xl font-bold mb-4 gradient-primary bg-clip-text text-transparent group-hover:animate-wiggle">
+                      {service.title}
+                    </h3>
+                    
+                    {/* Description */}
+                    <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+                      {service.description}
+                    </p>
+                    
+                    {/* Action Button */}
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="group/btn hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300"
+                    >
+                      Explore
+                      <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
+                    </Button>
                   </div>
                   
-                  <CardContent className="p-8">
-                    <Button variant="outline" className="group/btn w-full text-lg py-6 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300">
-                      Learn More
-                      <ArrowRight className="ml-2 h-5 w-5 group-hover/btn:translate-x-2 transition-transform duration-300" />
-                    </Button>
-                  </CardContent>
+                  {/* Hover Glow Effect */}
+                  <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                 </Card>
-              </div>)}
+              </div>
+            ))}
           </div>
         </div>
 
