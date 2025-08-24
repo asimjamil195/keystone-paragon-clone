@@ -1,10 +1,8 @@
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import heroImage from "@/assets/hero-consultancy.jpg";
 import Autoplay from "embla-carousel-autoplay";
-
 const Hero = () => {
-  return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
+  return <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
         <img src={heroImage} alt="Professional consultancy" className="w-full h-full object-cover" />
@@ -14,14 +12,9 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 py-20">
         <div className="max-w-4xl mx-auto text-center">
-          <Carousel
-            plugins={[
-              Autoplay({
-                delay: 4000,
-              }),
-            ]}
-            className="w-full"
-          >
+          <Carousel plugins={[Autoplay({
+          delay: 4000
+        })]} className="w-full">
             <CarouselContent>
               {/* First Slide: Your Gateway to Global Education */}
               <CarouselItem>
@@ -76,12 +69,12 @@ const Hero = () => {
               {/* Third Slide: Study Destinations */}
               <CarouselItem>
                 <div className="animate-slide-down">
-                  <span className="inline-block px-4 py-2 bg-accent/10 text-accent rounded-full text-sm font-semibold mb-6">
+                  <span className="inline-block px-4 py-2 bg-accent/10 text-accent rounded-full font-semibold mb-6 text-3xl">
                     Study Destinations
                   </span>
                   
                   <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-                    <span className="gradient-accent bg-clip-text text-transparent">
+                    <span className="gradient-accent bg-clip-text text-red-300">
                       Top Destinations
                     </span>
                   </h1>
@@ -121,15 +114,14 @@ const Hero = () => {
       {/* Enhanced Floating Elements */}
       <div className="absolute top-20 right-20 w-32 h-32 bg-accent/20 rounded-full blur-xl animate-float hidden lg:block"></div>
       <div className="absolute bottom-40 left-20 w-24 h-24 bg-primary-glow/20 rounded-full blur-xl animate-float hidden lg:block" style={{
-        animationDelay: "2s"
-      }}></div>
+      animationDelay: "2s"
+    }}></div>
       <div className="absolute top-1/3 left-1/4 w-16 h-16 bg-primary/10 rounded-full blur-lg animate-float hidden lg:block" style={{
-        animationDelay: "4s"
-      }}></div>
+      animationDelay: "4s"
+    }}></div>
       <div className="absolute bottom-1/3 right-1/3 w-20 h-20 bg-accent/15 rounded-full blur-lg animate-float hidden lg:block" style={{
-        animationDelay: "1s"
-      }}></div>
-    </section>
-  );
+      animationDelay: "1s"
+    }}></div>
+    </section>;
 };
 export default Hero;
