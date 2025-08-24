@@ -67,13 +67,7 @@ const ServicesHighlight = () => {
                   <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.3" />
                 </linearGradient>
               </defs>
-              <path
-                d="M 50 200 Q 250 100 400 200 Q 550 300 750 200"
-                stroke="url(#pathGradient)"
-                strokeWidth="4"
-                fill="none"
-                className="animate-pulse-glow"
-              />
+              <path d="M 50 200 Q 250 100 400 200 Q 550 300 750 200" stroke="url(#pathGradient)" strokeWidth="4" fill="none" className="animate-pulse-glow" />
               {/* Animated dots along path */}
               <circle r="6" fill="hsl(var(--primary))">
                 <animateMotion dur="8s" repeatCount="indefinite">
@@ -90,26 +84,19 @@ const ServicesHighlight = () => {
           
           {/* Service Steps */}
           <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-center">
-            {services.map((service, index) => (
-              <div 
-                key={service.title} 
-                className="group animate-fade-up-stagger relative" 
-                style={{animationDelay: `${index * 0.3}s`}}
-              >
+            {services.map((service, index) => <div key={service.title} className="group animate-fade-up-stagger relative" style={{
+            animationDelay: `${index * 0.3}s`
+          }}>
                 {/* Connection Line to Next Step */}
-                {index < services.length - 1 && (
-                  <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-0.5 bg-gradient-to-r from-primary/50 to-accent/50 z-0">
+                {index < services.length - 1 && <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-0.5 bg-gradient-to-r from-primary/50 to-accent/50 z-0">
                     <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent animate-pulse opacity-60"></div>
-                  </div>
-                )}
+                  </div>}
                 
                 {/* Service Card */}
                 <Card className="relative overflow-hidden bg-background/80 backdrop-blur-sm border-border/50 hover:border-primary/30 transition-all duration-500 hover:shadow-elegant hover:-translate-y-2 group-hover:scale-105">
                   <div className="relative p-8 text-center">
                     {/* Step Number */}
-                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-gradient-to-r from-primary to-accent text-white text-sm font-bold flex items-center justify-center border-4 border-background shadow-lg">
-                      {index + 1}
-                    </div>
+                    
                     
                     {/* Icon with animated background */}
                     <div className="relative mb-6 mt-4">
@@ -130,11 +117,7 @@ const ServicesHighlight = () => {
                     </p>
                     
                     {/* Action Button */}
-                    <Button 
-                      variant="outline" 
-                      size="sm" 
-                      className="group/btn hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300"
-                    >
+                    <Button variant="outline" size="sm" className="group/btn hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300">
                       Explore
                       <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
                     </Button>
@@ -143,8 +126,7 @@ const ServicesHighlight = () => {
                   {/* Hover Glow Effect */}
                   <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                 </Card>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
 

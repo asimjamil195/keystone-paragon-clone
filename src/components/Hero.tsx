@@ -3,13 +3,13 @@ import heroEducation from "@/assets/hero-education.jpg";
 import heroServices from "@/assets/hero-services.jpg";
 import heroDestinations from "@/assets/hero-destinations.jpg";
 import Autoplay from "embla-carousel-autoplay";
-
 const Hero = () => {
-  return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
+  return <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
       {/* Content */}
       <div className="relative z-10 w-full">
-        <Carousel plugins={[Autoplay({ delay: 4000 })]} className="w-full">
+        <Carousel plugins={[Autoplay({
+        delay: 4000
+      })]} className="w-full">
           <CarouselContent>
             {/* First Slide: Your Gateway to Global Education */}
             <CarouselItem className="relative">
@@ -124,18 +124,22 @@ const Hero = () => {
             </CarouselItem>
           </CarouselContent>
           
-          <CarouselPrevious className="left-8 w-16 h-16 bg-white/20 border-white/30 text-white hover:bg-white/30 hover:scale-110 transition-all duration-300" />
+          <CarouselPrevious className="left-8 w-16 h-16 bg-white/20 border-white/30 text-white hover:bg-white/30 hover:scale-110 transition-all duration-300 text-base" />
           <CarouselNext className="right-8 w-16 h-16 bg-white/20 border-white/30 text-white hover:bg-white/30 hover:scale-110 transition-all duration-300" />
         </Carousel>
       </div>
 
       {/* Enhanced Floating Elements */}
       <div className="absolute top-20 right-20 w-32 h-32 bg-accent/20 rounded-full blur-xl animate-float hidden lg:block"></div>
-      <div className="absolute bottom-40 left-20 w-24 h-24 bg-primary-glow/20 rounded-full blur-xl animate-float hidden lg:block" style={{ animationDelay: "2s" }}></div>
-      <div className="absolute top-1/3 left-1/4 w-16 h-16 bg-primary/10 rounded-full blur-lg animate-float hidden lg:block" style={{ animationDelay: "4s" }}></div>
-      <div className="absolute bottom-1/3 right-1/3 w-20 h-20 bg-accent/15 rounded-full blur-lg animate-float hidden lg:block" style={{ animationDelay: "1s" }}></div>
-    </section>
-  );
+      <div className="absolute bottom-40 left-20 w-24 h-24 bg-primary-glow/20 rounded-full blur-xl animate-float hidden lg:block" style={{
+      animationDelay: "2s"
+    }}></div>
+      <div className="absolute top-1/3 left-1/4 w-16 h-16 bg-primary/10 rounded-full blur-lg animate-float hidden lg:block" style={{
+      animationDelay: "4s"
+    }}></div>
+      <div className="absolute bottom-1/3 right-1/3 w-20 h-20 bg-accent/15 rounded-full blur-lg animate-float hidden lg:block" style={{
+      animationDelay: "1s"
+    }}></div>
+    </section>;
 };
-
 export default Hero;
