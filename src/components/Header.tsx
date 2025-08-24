@@ -45,9 +45,11 @@ const Header = () => {
 
             {/* CTA Button */}
             <div className="hidden md:block">
-              <Button className="gradient-primary hover:shadow-glow transition-all duration-300">
-                Book Free Consultation
-              </Button>
+              <Link to="/book-consultation">
+                <Button className="gradient-primary hover:shadow-glow transition-all duration-300">
+                  Book Free Consultation
+                </Button>
+              </Link>
             </div>
 
             {/* Mobile Menu Button */}
@@ -62,9 +64,11 @@ const Header = () => {
                 {navigation.map(item => <Link key={item.name} to={item.href} className="text-foreground hover:text-primary transition-colors font-medium py-2" onClick={() => setIsMenuOpen(false)}>
                     {item.name}
                   </Link>)}
-                <Button className="gradient-primary mt-4 w-fit">
-                  Book Free Consultation
-                </Button>
+                <Link to="/book-consultation">
+                  <Button className="gradient-primary mt-4 w-fit">
+                    Book Free Consultation
+                  </Button>
+                </Link>
               </nav>
             </div>}
         </div>
