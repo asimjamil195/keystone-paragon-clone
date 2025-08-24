@@ -15,7 +15,7 @@ const Header = () => {
     href: "/services"
   }, {
     name: "Apply Now",
-    href: "#apply"
+    href: "/apply"
   }, {
     name: "Contact Us",
     href: "/contact"
