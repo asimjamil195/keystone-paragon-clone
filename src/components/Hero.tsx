@@ -11,8 +11,8 @@ const Hero = () => {
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 py-20">
-        <div className="max-w-4xl">
-          <div className="animate-fade-up">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="animate-slide-down">
             <span className="inline-block px-4 py-2 bg-accent/10 text-accent rounded-full text-sm font-semibold mb-6">
               Educational Consultant
             </span>
@@ -24,27 +24,13 @@ const Hero = () => {
               </span>
             </h1>
             
-            <p className="text-xl text-white/90 mb-4 max-w-2xl leading-relaxed">
+            <p className="text-xl text-white/90 mb-4 max-w-2xl mx-auto leading-relaxed">
               Study Abroad | Scholarships | Visa Support | Career Counselling
             </p>
             
-            <p className="text-lg text-white/80 mb-12 max-w-2xl leading-relaxed">
+            <p className="text-lg text-white/80 mb-12 max-w-2xl mx-auto leading-relaxed">
               Empowering students to achieve global success through personalized education guidance and expert support at every step.
             </p>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 animate-fade-up" style={{
-            animationDelay: "0.4s"
-          }}>
-              <Button size="lg" className="bg-accent hover:bg-accent-light text-accent-foreground font-semibold px-8 py-6 text-lg group transition-all duration-300 hover:shadow-glow">
-                Book Free Consultation
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              
-              <Button size="lg" variant="outline" className="bg-primary/20 border-primary text-white font-bold backdrop-blur-sm px-8 py-6 transition-all duration-300 hover:bg-primary/30">
-                Learn More
-              </Button>
-            </div>
           </div>
         </div>
       </div>
