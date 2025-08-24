@@ -19,13 +19,13 @@ const Hero = () => {
               {/* First Slide: Your Gateway to Global Education */}
               <CarouselItem>
                 <div className="animate-slide-down">
-                  <span className="inline-block px-4 py-2 bg-accent/10 text-accent rounded-full text-sm font-semibold mb-6">
+                  <span className="inline-block px-4 py-2 bg-accent/10 text-accent rounded-full font-semibold mb-6 text-3xl">
                     Educational Consultant
                   </span>
                   
                   <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
                     Your Gateway to
-                    <span className="block gradient-accent bg-clip-text text-transparent">
+                    <span className="block gradient-accent bg-clip-text text-transparent text-7xl">
                       Global Education
                     </span>
                   </h1>
@@ -105,8 +105,8 @@ const Hero = () => {
               </CarouselItem>
             </CarouselContent>
             
-            <CarouselPrevious className="left-4 bg-white/10 border-white/20 text-white hover:bg-white/20" />
-            <CarouselNext className="right-4 bg-white/10 border-white/20 text-white hover:bg-white/20" />
+            <CarouselPrevious className="left-4 bg-white/10 border-white/20 text-white hover:bg-white/20 text-base rounded-3xl" />
+            <CarouselNext className="right-4 bg-white/10 border-white/20 hover:bg-white/20 text-red-500 font-normal text-7xl" />
           </Carousel>
         </div>
       </div>
