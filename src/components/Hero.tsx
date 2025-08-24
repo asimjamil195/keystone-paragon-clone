@@ -20,18 +20,18 @@ const Hero = () => {
               <div className="relative z-10 container mx-auto px-4 py-20 min-h-screen flex items-center justify-center">
                 <div className="max-w-4xl mx-auto text-center">
                   <div className="animate-slide-down">
-                    <span className="inline-block px-4 py-2 bg-accent/10 text-accent rounded-full font-semibold mb-6 text-3xl">
+                    <span className="inline-block px-6 py-3 bg-accent/10 text-accent rounded-full font-semibold mb-8 text-sm uppercase tracking-wider">
                       Educational Consultant
                     </span>
                     
-                    <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+                    <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-tight font-poppins">
                       Your Gateway to
-                      <span className="block gradient-accent bg-clip-text text-transparent text-7xl">
+                      <span className="block gradient-accent bg-clip-text text-transparent">
                         Global Education
                       </span>
                     </h1>
                     
-                    <p className="text-lg text-white/80 mb-12 max-w-2xl mx-auto leading-relaxed">
+                    <p className="text-lg md:text-xl text-white/90 mb-12 max-w-2xl mx-auto leading-relaxed font-inter">
                       Empowering students to achieve global success through personalized education guidance and expert support at every step.
                     </p>
                   </div>
@@ -48,11 +48,11 @@ const Hero = () => {
               <div className="relative z-10 container mx-auto px-4 py-20 min-h-screen flex items-center justify-center">
                 <div className="max-w-4xl mx-auto text-center">
                   <div className="animate-slide-down">
-                    <span className="inline-block px-4 py-2 bg-accent/10 text-accent rounded-full text-sm font-semibold mb-6">
+                    <span className="inline-block px-6 py-3 bg-accent/10 text-accent rounded-full text-sm font-semibold mb-8 uppercase tracking-wider">
                       Our Services
                     </span>
                     
-                    <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+                    <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-tight font-poppins">
                       <span className="gradient-accent bg-clip-text text-transparent">
                         Study Abroad
                       </span>
@@ -86,11 +86,11 @@ const Hero = () => {
               <div className="relative z-10 container mx-auto px-4 py-20 min-h-screen flex items-center justify-center">
                 <div className="max-w-4xl mx-auto text-center">
                   <div className="animate-slide-down">
-                    <span className="inline-block px-4 py-2 bg-accent/10 text-accent rounded-full font-semibold mb-6 text-3xl">
+                    <span className="inline-block px-6 py-3 bg-accent/10 text-accent rounded-full font-semibold mb-8 text-sm uppercase tracking-wider">
                       Study Destinations
                     </span>
                     
-                    <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+                    <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-tight font-poppins">
                       <span className="gradient-accent bg-clip-text text-transparent">
                         Top Destinations
                       </span>

@@ -38,11 +38,11 @@ const WhyChooseUs = () => {
           <span className="text-primary font-semibold text-sm uppercase tracking-wider mb-2 block">
             Why Choose Us
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 font-poppins">
             Why Choose
             <span className="gradient-primary bg-clip-text text-transparent"> Keystone?</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
+          <p className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto font-inter">
             We're committed to providing exceptional guidance and support throughout your study abroad journey.
           </p>
         </ScrollReveal>

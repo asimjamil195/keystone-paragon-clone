@@ -40,16 +40,16 @@ const About = () => {
             <span className="text-primary font-semibold text-sm uppercase tracking-wider mb-2 block">
               About Keystone
             </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 font-poppins">
               Welcome to
               <span className="gradient-primary bg-clip-text text-transparent"> Keystone Consultants</span>
             </h2>
             
-            <p className="text-lg mb-6 leading-relaxed text-foreground">
+            <p className="text-lg md:text-xl mb-6 leading-relaxed text-foreground font-inter">
               Keystone Consultants is your trusted partner for study-abroad planning and admissions. From our office in Lahore, we help students explore universities in the UK, USA, Australia, Canada, and other destinations. Our experienced counsellors simplify the complex admission and visa processes, offer one‑to‑one guidance, and recommend programs that align with your goals.
             </p>
             
-            <p className="text-muted-foreground mb-8 leading-relaxed">
+            <p className="text-muted-foreground mb-8 leading-relaxed font-inter">
               Whether it's undergrad, postgrad, or professional study — we support you from application to arrival.
             </p>
 
