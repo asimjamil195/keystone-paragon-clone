@@ -2,32 +2,41 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Users, Target, Award, TrendingUp } from "lucide-react";
 import teamImage from "@/assets/team-meeting.jpg";
+import ScrollReveal from "@/components/ScrollReveal";
+import AnimatedCounter from "@/components/AnimatedCounter";
+import { useStaggeredAnimation } from "@/hooks/useIntersectionObserver";
 
 const About = () => {
   const stats = [{
     icon: Users,
-    number: "500+",
+    number: 500,
+    suffix: "+",
     label: "Students Placed"
   }, {
     icon: Target,
-    number: "98%",
+    number: 98,
+    suffix: "%",
     label: "Visa Success Rate"
   }, {
     icon: Award,
-    number: "15+",
+    number: 15,
+    suffix: "+",
     label: "Years Experience"
   }, {
     icon: TrendingUp,
-    number: "25+",
+    number: 25,
+    suffix: "+",
     label: "Partner Universities"
   }];
+
+  const [ref, visibleItems] = useStaggeredAnimation(stats.length, 100);
 
   return (
     <section id="about" className="py-20 bg-secondary/30">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Content */}
-          <div className="animate-fade-up">
+          <ScrollReveal animation="fade-right" className="">
             <span className="text-primary font-semibold text-sm uppercase tracking-wider mb-2 block">
               About Keystone
             </span>
@@ -45,41 +54,54 @@ const About = () => {
             </p>
 
             {/* Stats Grid */}
-            <div className="grid grid-cols-2 gap-6 mb-8">
+            <div ref={ref} className="grid grid-cols-2 gap-6 mb-8">
               {stats.map((stat, index) => (
-                <div key={stat.label} className="text-center animate-scale-in" style={{
-                  animationDelay: `${index * 0.1}s`
-                }}>
-                  <div className="flex items-center justify-center w-12 h-12 mx-auto mb-3 gradient-primary rounded-lg">
-                    <stat.icon className="w-6 h-6 text-primary-foreground" />
+                <div 
+                  key={stat.label} 
+                  className={`text-center transition-all duration-700 ${
+                    visibleItems.has(index) 
+                      ? 'animate-bounce-in opacity-100 transform scale-100' 
+                      : 'opacity-0 transform scale-75'
+                  }`}
+                >
+                  <div className="flex items-center justify-center w-12 h-12 mx-auto mb-3 gradient-primary rounded-lg group hover:animate-pulse-glow">
+                    <stat.icon className="w-6 h-6 text-primary-foreground group-hover:animate-heartbeat" />
                   </div>
-                  <div className="text-2xl font-bold text-foreground">{stat.number}</div>
-                  <div className="text-sm text-muted-foreground">{stat.label}</div>
+                  <AnimatedCounter 
+                    end={stat.number}
+                    suffix={stat.suffix}
+                    className="text-2xl font-bold text-foreground"
+                  />
+                  <div className="text-sm text-muted-foreground mt-2">{stat.label}</div>
                 </div>
               ))}
             </div>
 
-            <Button className="gradient-primary hover:shadow-glow transition-all duration-300">
-              Book Free Consultation
-            </Button>
-          </div>
+            <ScrollReveal animation="scale-in" delay={200}>
+              <Button className="gradient-primary hover:shadow-glow transition-all duration-300 hover:animate-pulse-glow">
+                Book Free Consultation
+              </Button>
+            </ScrollReveal>
+          </ScrollReveal>
 
           {/* Image */}
-          <div className="animate-fade-up" style={{
-            animationDelay: "0.3s"
-          }}>
-            <Card className="overflow-hidden shadow-elegant">
+          <ScrollReveal animation="fade-left" delay={300} className="">
+            <Card className="overflow-hidden shadow-elegant hover:animate-float group">
               <CardContent className="p-0">
-                <img src={teamImage} alt="Keystone Consultancy Team" className="w-full h-[500px] object-cover" />
+                <img 
+                  src={teamImage} 
+                  alt="Keystone Consultancy Team" 
+                  className="w-full h-[500px] object-cover group-hover:scale-105 transition-transform duration-700" 
+                />
                 <div className="p-8 gradient-hero">
-                  <h3 className="text-xl font-bold text-white mb-2">Your Success, Our Mission</h3>
-                  <p className="text-white/90">
+                  <h3 className="text-xl font-bold text-white mb-2 group-hover:animate-fade-up">Your Success, Our Mission</h3>
+                  <p className="text-white/90 group-hover:animate-fade-up" style={{ animationDelay: '100ms' }}>
                     Our dedicated team of education counsellors works tirelessly to turn your study abroad dreams into reality.
                   </p>
                 </div>
               </CardContent>
             </Card>
-          </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

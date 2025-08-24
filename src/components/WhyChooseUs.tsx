@@ -1,5 +1,8 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { UserCheck, Heart, Award, Globe } from "lucide-react";
+import ScrollReveal from "@/components/ScrollReveal";
+import AnimatedCard from "@/components/AnimatedCard";
+import { useStaggeredAnimation } from "@/hooks/useIntersectionObserver";
 
 const WhyChooseUs = () => {
   const features = [
@@ -25,11 +28,13 @@ const WhyChooseUs = () => {
     }
   ];
 
+  const [ref, visibleItems] = useStaggeredAnimation(features.length, 150);
+
   return (
     <section className="py-20 bg-secondary/30">
       <div className="container mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-16 animate-fade-up">
+        <ScrollReveal animation="fade-up" className="text-center mb-16">
           <span className="text-primary font-semibold text-sm uppercase tracking-wider mb-2 block">
             Why Choose Us
           </span>
@@ -40,29 +45,38 @@ const WhyChooseUs = () => {
           <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
             We're committed to providing exceptional guidance and support throughout your study abroad journey.
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* Features Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div ref={ref} className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, index) => (
-            <Card 
+            <div
               key={feature.title}
-              className="group hover:shadow-elegant transition-all duration-500 animate-scale-in border-border/50 hover:border-primary/20 hover:-translate-y-3 cursor-pointer overflow-hidden relative"
-              style={{ animationDelay: `${index * 0.15}s` }}
+              className={`transition-all duration-700 ${
+                visibleItems.has(index) 
+                  ? 'animate-fade-up opacity-100 transform translate-y-0' 
+                  : 'opacity-0 transform translate-y-8'
+              }`}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <CardContent className="p-8 text-center relative z-10">
-                <div className="w-16 h-16 gradient-primary rounded-full flex items-center justify-center mb-6 mx-auto group-hover:shadow-glow transition-all duration-500 group-hover:scale-125 group-hover:rotate-6">
-                  <feature.icon className="w-8 h-8 text-primary-foreground group-hover:animate-pulse" />
-                </div>
-                <h3 className="text-xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors duration-300">
-                  {feature.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed group-hover:text-foreground/80 transition-colors duration-300">
-                  {feature.description}
-                </p>
-              </CardContent>
-            </Card>
+              <AnimatedCard 
+                hoverAnimation="float"
+                clickAnimation="bounce"
+                className="h-full border-border/50 hover:border-primary/20 group overflow-hidden relative"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <CardContent className="p-8 text-center relative z-10">
+                  <div className="w-16 h-16 gradient-primary rounded-full flex items-center justify-center mb-6 mx-auto group-hover:shadow-glow transition-all duration-500 group-hover:scale-125 group-hover:animate-pulse-glow">
+                    <feature.icon className="w-8 h-8 text-primary-foreground group-hover:animate-heartbeat" />
+                  </div>
+                  <h3 className="text-xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors duration-300">
+                    {feature.title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed group-hover:text-foreground/80 transition-colors duration-300">
+                    {feature.description}
+                  </p>
+                </CardContent>
+              </AnimatedCard>
+            </div>
           ))}
         </div>
       </div>
