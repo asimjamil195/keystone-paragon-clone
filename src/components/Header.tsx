@@ -25,15 +25,13 @@ const Header = () => {
       
 
       {/* Main Navigation */}
-      <header className="bg-background/95 backdrop-blur-sm border-b sticky top-0 z-50">
+      <header className="backdrop-blur-sm border-b sticky top-0 z-50 bg-slate-50">
         <div className="container mx-auto px-4 bg-slate-50">
           <div className="flex justify-between items-center py-4 rounded-md bg-gray-50">
             {/* Logo */}
             <Link to="/" className="flex items-center space-x-3 group">
               <img src="/lovable-uploads/217a3d6e-6ae4-4524-a131-32c433063409.png" alt="Keystone Consultants" className="h-12 w-auto transition-transform duration-300 group-hover:scale-105" />
-              <div className="text-xl font-bold gradient-primary bg-clip-text text-transparent hidden sm:block">
-                Keystone Consultants
-              </div>
+              
             </Link>
 
             {/* Desktop Navigation */}
