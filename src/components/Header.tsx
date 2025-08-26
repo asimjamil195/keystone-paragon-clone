@@ -27,13 +27,13 @@ const Header = () => {
       {/* Main Navigation */}
       <header className="backdrop-blur-sm border-b sticky top-0 z-50 bg-slate-50">
         <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center py-2">
+          <div className="flex justify-between items-center py-2 md:py-3">
             {/* Logo */}
-            <Link to="/" className="flex items-center space-x-3 group">
+            <Link to="/" className="flex items-center group">
               <img 
                 src="/lovable-uploads/9680bc2e-0b02-4b16-a021-028af5bacf18.png" 
                 alt="Keystone Consultants Pvt. Ltd." 
-                className="h-28 w-auto transition-transform duration-300 group-hover:scale-105" 
+                className="h-20 md:h-28 w-auto transition-transform duration-300 group-hover:scale-105" 
               />
             </Link>
 
