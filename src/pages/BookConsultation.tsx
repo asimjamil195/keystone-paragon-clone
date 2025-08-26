@@ -12,22 +12,20 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
 import { Calendar, Phone, CheckCircle } from "lucide-react";
-
 const formSchema = z.object({
   fullName: z.string().min(2, "Full name must be at least 2 characters"),
   email: z.string().email("Please enter a valid email address"),
   phone: z.string().min(10, "Please enter a valid phone number"),
   preferredTime: z.string().min(1, "Please select your preferred time"),
   consultationType: z.string().min(1, "Please select consultation type"),
-  message: z.string().optional(),
+  message: z.string().optional()
 });
-
 type FormData = z.infer<typeof formSchema>;
-
 const BookConsultation = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const { toast } = useToast();
-
+  const {
+    toast
+  } = useToast();
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -36,49 +34,29 @@ const BookConsultation = () => {
       phone: "",
       preferredTime: "",
       consultationType: "",
-      message: "",
-    },
+      message: ""
+    }
   });
-
-  const timeSlots = [
-    "9:00 AM - 10:00 AM",
-    "10:00 AM - 11:00 AM", 
-    "11:00 AM - 12:00 PM",
-    "2:00 PM - 3:00 PM",
-    "3:00 PM - 4:00 PM",
-    "4:00 PM - 5:00 PM"
-  ];
-
-  const consultationTypes = [
-    "General Study Abroad Consultation",
-    "University Selection Guidance",
-    "Scholarship Information",
-    "Visa Application Support",
-    "Career Counseling"
-  ];
-
+  const timeSlots = ["9:00 AM - 10:00 AM", "10:00 AM - 11:00 AM", "11:00 AM - 12:00 PM", "2:00 PM - 3:00 PM", "3:00 PM - 4:00 PM", "4:00 PM - 5:00 PM"];
+  const consultationTypes = ["General Study Abroad Consultation", "University Selection Guidance", "Scholarship Information", "Visa Application Support", "Career Counseling"];
   const onSubmit = async (data: FormData) => {
     try {
       console.log("Consultation booking:", data);
-      
       toast({
         title: "Consultation Booked Successfully!",
-        description: "We'll contact you within 2 hours to confirm your appointment.",
+        description: "We'll contact you within 2 hours to confirm your appointment."
       });
-      
       setIsSubmitted(true);
     } catch (error) {
       toast({
         title: "Booking Failed",
         description: "Please try again or call us directly.",
-        variant: "destructive",
+        variant: "destructive"
       });
     }
   };
-
   if (isSubmitted) {
-    return (
-      <div className="min-h-screen">
+    return <div className="min-h-screen">
         <Header />
         <main className="py-20 gradient-hero">
           <div className="container mx-auto px-4">
@@ -92,23 +70,16 @@ const BookConsultation = () => {
               <p className="text-white/90 text-lg mb-8">
                 Thank you for booking a free consultation. Our expert consultants will contact you within 2 hours to confirm your appointment.
               </p>
-              <Button 
-                onClick={() => setIsSubmitted(false)}
-                variant="outline"
-                className="border-white/30 text-white hover:bg-white/10"
-              >
+              <Button onClick={() => setIsSubmitted(false)} variant="outline" className="border-white/30 bg-teal-300 hover:bg-teal-200 text-zinc-900 font-semibold">
                 Book Another Consultation
               </Button>
             </div>
           </div>
         </main>
         <Footer />
-      </div>
-    );
+      </div>;
   }
-
-  return (
-    <div className="min-h-screen">
+  return <div className="min-h-screen">
       <Header />
       
       <main className="py-20 gradient-hero">
@@ -140,55 +111,41 @@ const BookConsultation = () => {
                 <Form {...form}>
                   <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                     <div className="grid md:grid-cols-2 gap-6">
-                      <FormField
-                        control={form.control}
-                        name="fullName"
-                        render={({ field }) => (
-                          <FormItem>
+                      <FormField control={form.control} name="fullName" render={({
+                      field
+                    }) => <FormItem>
                             <FormLabel>Full Name *</FormLabel>
                             <FormControl>
                               <Input placeholder="Enter your full name" {...field} />
                             </FormControl>
                             <FormMessage />
-                          </FormItem>
-                        )}
-                      />
+                          </FormItem>} />
                       
-                      <FormField
-                        control={form.control}
-                        name="email"
-                        render={({ field }) => (
-                          <FormItem>
+                      <FormField control={form.control} name="email" render={({
+                      field
+                    }) => <FormItem>
                             <FormLabel>Email Address *</FormLabel>
                             <FormControl>
                               <Input type="email" placeholder="your.email@example.com" {...field} />
                             </FormControl>
                             <FormMessage />
-                          </FormItem>
-                        )}
-                      />
+                          </FormItem>} />
                     </div>
 
-                    <FormField
-                      control={form.control}
-                      name="phone"
-                      render={({ field }) => (
-                        <FormItem>
+                    <FormField control={form.control} name="phone" render={({
+                    field
+                  }) => <FormItem>
                           <FormLabel>Phone Number *</FormLabel>
                           <FormControl>
                             <Input type="tel" placeholder="+92 300 0000000" {...field} />
                           </FormControl>
                           <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+                        </FormItem>} />
 
                     <div className="grid md:grid-cols-2 gap-6">
-                      <FormField
-                        control={form.control}
-                        name="preferredTime"
-                        render={({ field }) => (
-                          <FormItem>
+                      <FormField control={form.control} name="preferredTime" render={({
+                      field
+                    }) => <FormItem>
                             <FormLabel>Preferred Time *</FormLabel>
                             <Select onValueChange={field.onChange} defaultValue={field.value}>
                               <FormControl>
@@ -197,23 +154,17 @@ const BookConsultation = () => {
                                 </SelectTrigger>
                               </FormControl>
                               <SelectContent>
-                                {timeSlots.map((time) => (
-                                  <SelectItem key={time} value={time.toLowerCase().replace(/\s+/g, '-')}>
+                                {timeSlots.map(time => <SelectItem key={time} value={time.toLowerCase().replace(/\s+/g, '-')}>
                                     {time}
-                                  </SelectItem>
-                                ))}
+                                  </SelectItem>)}
                               </SelectContent>
                             </Select>
                             <FormMessage />
-                          </FormItem>
-                        )}
-                      />
+                          </FormItem>} />
 
-                      <FormField
-                        control={form.control}
-                        name="consultationType"
-                        render={({ field }) => (
-                          <FormItem>
+                      <FormField control={form.control} name="consultationType" render={({
+                      field
+                    }) => <FormItem>
                             <FormLabel>Consultation Type *</FormLabel>
                             <Select onValueChange={field.onChange} defaultValue={field.value}>
                               <FormControl>
@@ -222,42 +173,26 @@ const BookConsultation = () => {
                                 </SelectTrigger>
                               </FormControl>
                               <SelectContent>
-                                {consultationTypes.map((type) => (
-                                  <SelectItem key={type} value={type.toLowerCase().replace(/\s+/g, '-')}>
+                                {consultationTypes.map(type => <SelectItem key={type} value={type.toLowerCase().replace(/\s+/g, '-')}>
                                     {type}
-                                  </SelectItem>
-                                ))}
+                                  </SelectItem>)}
                               </SelectContent>
                             </Select>
                             <FormMessage />
-                          </FormItem>
-                        )}
-                      />
+                          </FormItem>} />
                     </div>
 
-                    <FormField
-                      control={form.control}
-                      name="message"
-                      render={({ field }) => (
-                        <FormItem>
+                    <FormField control={form.control} name="message" render={({
+                    field
+                  }) => <FormItem>
                           <FormLabel>Additional Information</FormLabel>
                           <FormControl>
-                            <Textarea 
-                              placeholder="Tell us about your study goals, preferred destinations, or any specific questions..."
-                              rows={4}
-                              {...field}
-                            />
+                            <Textarea placeholder="Tell us about your study goals, preferred destinations, or any specific questions..." rows={4} {...field} />
                           </FormControl>
                           <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+                        </FormItem>} />
 
-                    <Button 
-                      type="submit" 
-                      className="w-full gradient-primary hover:shadow-glow transition-all duration-300 group text-lg py-6"
-                      disabled={form.formState.isSubmitting}
-                    >
+                    <Button type="submit" className="w-full gradient-primary hover:shadow-glow transition-all duration-300 group text-lg py-6" disabled={form.formState.isSubmitting}>
                       <Calendar className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
                       {form.formState.isSubmitting ? "Booking..." : "Book Free Consultation"}
                     </Button>
@@ -274,8 +209,6 @@ const BookConsultation = () => {
       </main>
       
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default BookConsultation;
