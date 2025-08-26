@@ -257,17 +257,17 @@
 
   /* Logo Styling */
   .logo {
-    width: 558px;
+    width: 280px;
     height: auto; /* keeps proportions */
-    max-height: 129px;
+    max-height: 65px;
   }
 
   /* Responsive for mobile */
   @media (max-width: 768px) {
     .logo {
-      width: 300px;
+      width: 200px;
       height: auto;
-      max-height: 70px;
+      max-height: 45px;
     }
   }
 }
