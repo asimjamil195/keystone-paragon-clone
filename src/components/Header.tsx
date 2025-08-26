@@ -30,8 +30,11 @@ const Header = () => {
           <div className="flex justify-between items-center py-2">
             {/* Logo */}
             <Link to="/" className="flex items-center space-x-3 group">
-              <img src="/lovable-uploads/5d1a862f-eec9-44f5-aa24-d3cc2bbd01c2.png" alt="Keystone Consultants Pvt. Ltd." className="logo transition-transform duration-300 group-hover:scale-105" />
-              
+              <img 
+                src="/lovable-uploads/9680bc2e-0b02-4b16-a021-028af5bacf18.png" 
+                alt="Keystone Consultants Pvt. Ltd." 
+                className="h-28 w-auto transition-transform duration-300 group-hover:scale-105" 
+              />
             </Link>
 
             {/* Desktop Navigation */}
