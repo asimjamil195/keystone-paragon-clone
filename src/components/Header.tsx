@@ -50,7 +50,7 @@ const Header = () => {
               <img 
                 src="/lovable-uploads/9680bc2e-0b02-4b16-a021-028af5bacf18.png" 
                 alt="Keystone Consultants Pvt. Ltd." 
-                className="h-16 w-auto transition-transform duration-300 group-hover:scale-105" 
+                className="h-24 md:h-28 w-auto max-w-xs transition-transform duration-300 group-hover:scale-105 shadow-sm" 
               />
             </Link>
 
