@@ -14,7 +14,129 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      applications: {
+        Row: {
+          budget_range: string | null
+          created_at: string
+          date_of_birth: string | null
+          destination: string
+          education_level: string | null
+          email: string
+          english_test_score: string | null
+          full_name: string
+          id: string
+          message: string | null
+          phone: string
+          program: string
+          status: string | null
+          updated_at: string
+          work_experience: string | null
+        }
+        Insert: {
+          budget_range?: string | null
+          created_at?: string
+          date_of_birth?: string | null
+          destination: string
+          education_level?: string | null
+          email: string
+          english_test_score?: string | null
+          full_name: string
+          id?: string
+          message?: string | null
+          phone: string
+          program: string
+          status?: string | null
+          updated_at?: string
+          work_experience?: string | null
+        }
+        Update: {
+          budget_range?: string | null
+          created_at?: string
+          date_of_birth?: string | null
+          destination?: string
+          education_level?: string | null
+          email?: string
+          english_test_score?: string | null
+          full_name?: string
+          id?: string
+          message?: string | null
+          phone?: string
+          program?: string
+          status?: string | null
+          updated_at?: string
+          work_experience?: string | null
+        }
+        Relationships: []
+      }
+      consultation_bookings: {
+        Row: {
+          consultation_type: string
+          created_at: string
+          email: string
+          full_name: string
+          id: string
+          message: string | null
+          phone: string
+          preferred_time: string
+          status: string | null
+          updated_at: string
+        }
+        Insert: {
+          consultation_type: string
+          created_at?: string
+          email: string
+          full_name: string
+          id?: string
+          message?: string | null
+          phone: string
+          preferred_time: string
+          status?: string | null
+          updated_at?: string
+        }
+        Update: {
+          consultation_type?: string
+          created_at?: string
+          email?: string
+          full_name?: string
+          id?: string
+          message?: string | null
+          phone?: string
+          preferred_time?: string
+          status?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      contact_messages: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          message: string
+          name: string
+          status: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          message: string
+          name: string
+          status?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          message?: string
+          name?: string
+          status?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
