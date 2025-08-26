@@ -255,19 +255,5 @@
     transition: var(--transition-bounce);
   }
 
-  /* Logo Styling */
-  .logo {
-    width: 280px;
-    height: auto; /* keeps proportions */
-    max-height: 65px;
-  }
-
-  /* Responsive for mobile */
-  @media (max-width: 768px) {
-    .logo {
-      width: 200px;
-      height: auto;
-      max-height: 45px;
-    }
-  }
+  /* Logo styling removed - using Tailwind classes directly */
 }
