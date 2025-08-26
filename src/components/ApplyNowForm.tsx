@@ -1,13 +1,77 @@
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Send, GraduationCap } from "lucide-react";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
+import { Send, GraduationCap, CheckCircle } from "lucide-react";
+
+const formSchema = z.object({
+  fullName: z.string().min(2, "Full name must be at least 2 characters"),
+  email: z.string().email("Please enter a valid email address"),
+  phone: z.string().min(10, "Please enter a valid phone number"),
+  program: z.string().min(1, "Please select a program"),
+  destination: z.string().min(1, "Please select a study destination"),
+  message: z.string().optional()
+});
+
+type FormData = z.infer<typeof formSchema>;
 
 const ApplyNowForm = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const { toast } = useToast();
+
+  const form = useForm<FormData>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      fullName: "",
+      email: "",
+      phone: "",
+      program: "",
+      destination: "",
+      message: ""
+    }
+  });
+
+  const onSubmit = async (data: FormData) => {
+    try {
+      const { error } = await supabase
+        .from('applications')
+        .insert({
+          full_name: data.fullName,
+          email: data.email,
+          phone: data.phone,
+          program: data.program,
+          destination: data.destination,
+          message: data.message || null
+        });
+
+      if (error) {
+        throw error;
+      }
+
+      toast({
+        title: "Application Submitted Successfully!",
+        description: "We'll review your application and get back to you within 24 hours."
+      });
+      
+      setIsSubmitted(true);
+    } catch (error) {
+      console.error("Error submitting application:", error);
+      toast({
+        title: "Submission Failed",
+        description: "Please try again or contact us directly.",
+        variant: "destructive"
+      });
+    }
+  };
 
   const programs = [
     "Undergraduate Degree",
@@ -27,6 +91,37 @@ const ApplyNowForm = () => {
     "Turkey",
     "Other"
   ];
+
+  if (isSubmitted) {
+    return (
+      <section className="py-20 gradient-hero">
+        <div className="container mx-auto px-4">
+          <div className="max-w-2xl mx-auto text-center animate-fade-up">
+            <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-8">
+              <CheckCircle className="w-12 h-12 text-white" />
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              Application Submitted!
+            </h2>
+            <p className="text-white/90 text-lg mb-8">
+              Thank you for your application. Our education consultants will review your information and contact you within 24 hours.
+            </p>
+            <Button 
+              onClick={() => {
+                setIsSubmitted(false);
+                setIsVisible(false);
+                form.reset();
+              }}
+              variant="outline"
+              className="border-white/30 bg-teal-300 hover:bg-teal-200 text-zinc-900 font-semibold"
+            >
+              Submit Another Application
+            </Button>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="py-20 gradient-hero">
@@ -67,110 +162,149 @@ const ApplyNowForm = () => {
                   Please provide your details and we'll get back to you within 24 hours.
                 </p>
               </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="text-sm font-medium text-foreground mb-2 block">
-                      Full Name *
-                    </label>
-                    <Input 
-                      placeholder="Enter your full name" 
-                      className="transition-all duration-300 focus:shadow-card" 
-                      required
+              <CardContent>
+                <Form {...form}>
+                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <FormField
+                        control={form.control}
+                        name="fullName"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Full Name *</FormLabel>
+                            <FormControl>
+                              <Input placeholder="Enter your full name" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      
+                      <FormField
+                        control={form.control}
+                        name="email"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Email Address *</FormLabel>
+                            <FormControl>
+                              <Input type="email" placeholder="your.email@example.com" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+
+                    <FormField
+                      control={form.control}
+                      name="phone"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Phone Number *</FormLabel>
+                          <FormControl>
+                            <Input type="tel" placeholder="+92 300 0000000" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                  </div>
-                  <div>
-                    <label className="text-sm font-medium text-foreground mb-2 block">
-                      Email Address *
-                    </label>
-                    <Input 
-                      type="email" 
-                      placeholder="your.email@example.com" 
-                      className="transition-all duration-300 focus:shadow-card" 
-                      required
+
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <FormField
+                        control={form.control}
+                        name="program"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Desired Program *</FormLabel>
+                            <Select onValueChange={field.onChange} defaultValue={field.value}>
+                              <FormControl>
+                                <SelectTrigger>
+                                  <SelectValue placeholder="Select program type" />
+                                </SelectTrigger>
+                              </FormControl>
+                              <SelectContent>
+                                {programs.map((program) => (
+                                  <SelectItem key={program} value={program.toLowerCase().replace(/\s+/g, '-')}>
+                                    {program}
+                                  </SelectItem>
+                                ))}
+                              </SelectContent>
+                            </Select>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      
+                      <FormField
+                        control={form.control}
+                        name="destination"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Study Destination *</FormLabel>
+                            <Select onValueChange={field.onChange} defaultValue={field.value}>
+                              <FormControl>
+                                <SelectTrigger>
+                                  <SelectValue placeholder="Select destination" />
+                                </SelectTrigger>
+                              </FormControl>
+                              <SelectContent>
+                                {destinations.map((destination) => (
+                                  <SelectItem key={destination} value={destination.toLowerCase().replace(/\s+/g, '-')}>
+                                    {destination}
+                                  </SelectItem>
+                                ))}
+                              </SelectContent>
+                            </Select>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+
+                    <FormField
+                      control={form.control}
+                      name="message"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Message</FormLabel>
+                          <FormControl>
+                            <Textarea 
+                              placeholder="Tell us about your academic background, career goals, and any specific requirements..."
+                              rows={4}
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
-                  </div>
-                </div>
 
-                <div>
-                  <label className="text-sm font-medium text-foreground mb-2 block">
-                    Phone Number *
-                  </label>
-                  <Input 
-                    type="tel" 
-                    placeholder="+92 300 0000000" 
-                    className="transition-all duration-300 focus:shadow-card" 
-                    required
-                  />
-                </div>
+                    <div className="flex flex-col sm:flex-row gap-4">
+                      <Button 
+                        type="submit" 
+                        className="flex-1 gradient-primary hover:shadow-glow transition-all duration-300 group"
+                        disabled={form.formState.isSubmitting}
+                      >
+                        <Send className="w-5 h-5 mr-2 group-hover:translate-x-1 transition-transform" />
+                        {form.formState.isSubmitting ? "Submitting..." : "Submit Application"}
+                      </Button>
+                      
+                      <Button 
+                        type="button"
+                        variant="outline" 
+                        onClick={() => setIsVisible(false)}
+                        className="border-white/30 text-primary hover:bg-primary/5 transition-colors"
+                      >
+                        Close Form
+                      </Button>
+                    </div>
 
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="text-sm font-medium text-foreground mb-2 block">
-                      Desired Program *
-                    </label>
-                    <Select>
-                      <SelectTrigger className="transition-all duration-300 focus:shadow-card">
-                        <SelectValue placeholder="Select program type" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {programs.map((program) => (
-                          <SelectItem key={program} value={program.toLowerCase().replace(/\s+/g, '-')}>
-                            {program}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div>
-                    <label className="text-sm font-medium text-foreground mb-2 block">
-                      Study Destination *
-                    </label>
-                    <Select>
-                      <SelectTrigger className="transition-all duration-300 focus:shadow-card">
-                        <SelectValue placeholder="Select destination" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {destinations.map((destination) => (
-                          <SelectItem key={destination} value={destination.toLowerCase().replace(/\s+/g, '-')}>
-                            {destination}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
-                </div>
-
-                <div>
-                  <label className="text-sm font-medium text-foreground mb-2 block">
-                    Message
-                  </label>
-                  <Textarea 
-                    placeholder="Tell us about your academic background, career goals, and any specific requirements..."
-                    rows={4}
-                    className="transition-all duration-300 focus:shadow-card"
-                  />
-                </div>
-
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Button className="flex-1 gradient-primary hover:shadow-glow transition-all duration-300 group">
-                    <Send className="w-5 h-5 mr-2 group-hover:translate-x-1 transition-transform" />
-                    Submit Application
-                  </Button>
-                  
-                  <Button 
-                    variant="outline" 
-                    onClick={() => setIsVisible(false)}
-                    className="border-white/30 text-primary hover:bg-primary/5 transition-colors"
-                  >
-                    Close Form
-                  </Button>
-                </div>
-
-                <p className="text-xs text-muted-foreground text-center">
-                  By submitting this form, you agree to our privacy policy and terms of service. 
-                  We'll use your information to provide you with personalized education guidance.
-                </p>
+                    <p className="text-xs text-muted-foreground text-center">
+                      By submitting this form, you agree to our privacy policy and terms of service. 
+                      We'll use your information to provide you with personalized education guidance.
+                    </p>
+                  </form>
+                </Form>
               </CardContent>
             </Card>
           </div>
