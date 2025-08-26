@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Phone, Mail } from "lucide-react";
+import { Menu, X, Phone, Mail, Facebook, Twitter, Instagram, Youtube, Linkedin } from "lucide-react";
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigation = [{
@@ -20,35 +20,58 @@ const Header = () => {
     name: "Contact Us",
     href: "/contact"
   }];
-  return <>
+  return (
+    <>
       {/* Top Bar */}
-      
+      <div className="bg-primary text-primary-foreground py-2 px-4 hidden md:block">
+        <div className="container mx-auto flex justify-between items-center">
+          <div className="flex items-center space-x-4">
+            <Facebook className="h-4 w-4 hover:text-primary-foreground/80 cursor-pointer transition-colors" />
+            <Twitter className="h-4 w-4 hover:text-primary-foreground/80 cursor-pointer transition-colors" />
+            <Instagram className="h-4 w-4 hover:text-primary-foreground/80 cursor-pointer transition-colors" />
+            <Youtube className="h-4 w-4 hover:text-primary-foreground/80 cursor-pointer transition-colors" />
+            <Linkedin className="h-4 w-4 hover:text-primary-foreground/80 cursor-pointer transition-colors" />
+          </div>
+          <div className="flex items-center space-x-4 text-sm">
+            <div className="flex items-center space-x-2">
+              <Phone className="h-4 w-4" />
+              <span>UAN: (+92) 304 1110947</span>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Main Navigation */}
-      <header className="backdrop-blur-sm border-b sticky top-0 z-50 bg-gradient-to-r from-background via-background/95 to-background shadow-sm">
+      <header className="bg-background border-b sticky top-0 z-50 shadow-sm">
         <div className="container mx-auto px-6">
-          <div className="flex justify-between items-center py-4 md:py-6">
+          <div className="flex justify-between items-center py-3">
             {/* Logo */}
             <Link to="/" className="flex items-center group">
               <img 
                 src="/lovable-uploads/9680bc2e-0b02-4b16-a021-028af5bacf18.png" 
                 alt="Keystone Consultants Pvt. Ltd." 
-                className="h-28 md:h-36 w-auto transition-transform duration-300 group-hover:scale-105" 
+                className="h-16 w-auto transition-transform duration-300 group-hover:scale-105" 
               />
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center space-x-8 mx-8">
-              {navigation.map(item => <Link key={item.name} to={item.href} className="text-foreground hover:text-primary transition-colors font-medium">
+            <nav className="hidden md:flex items-center space-x-8">
+              {navigation.map(item => (
+                <Link 
+                  key={item.name} 
+                  to={item.href} 
+                  className="text-foreground hover:text-primary transition-colors font-medium text-sm"
+                >
                   {item.name}
-                </Link>)}
+                </Link>
+              ))}
             </nav>
 
             {/* CTA Button */}
             <div className="hidden md:block">
-              <Link to="/book-consultation">
-                <Button className="gradient-primary hover:shadow-glow transition-all duration-300">
-                  Book Free Consultation
+              <Link to="/apply">
+                <Button className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-2 text-sm font-medium rounded-full">
+                  APPLY NOW
                 </Button>
               </Link>
             </div>
@@ -60,20 +83,30 @@ const Header = () => {
           </div>
 
           {/* Mobile Menu */}
-          {isMenuOpen && <div className="md:hidden border-t py-4 animate-fade-up">
+          {isMenuOpen && (
+            <div className="md:hidden border-t py-4 animate-fade-up">
               <nav className="flex flex-col space-y-4">
-                {navigation.map(item => <Link key={item.name} to={item.href} className="text-foreground hover:text-primary transition-colors font-medium py-2" onClick={() => setIsMenuOpen(false)}>
+                {navigation.map(item => (
+                  <Link 
+                    key={item.name} 
+                    to={item.href} 
+                    className="text-foreground hover:text-primary transition-colors font-medium py-2" 
+                    onClick={() => setIsMenuOpen(false)}
+                  >
                     {item.name}
-                  </Link>)}
-                <Link to="/book-consultation">
-                  <Button className="gradient-primary mt-4 w-fit">
-                    Book Free Consultation
+                  </Link>
+                ))}
+                <Link to="/apply">
+                  <Button className="bg-primary hover:bg-primary/90 text-primary-foreground mt-4 w-fit px-6 py-2 text-sm font-medium rounded-full">
+                    APPLY NOW
                   </Button>
                 </Link>
               </nav>
-            </div>}
+            </div>
+          )}
         </div>
       </header>
-    </>;
+    </>
+  );
 };
 export default Header;
