@@ -11,6 +11,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 import { Send, GraduationCap, CheckCircle } from "lucide-react";
 
 const formSchema = z.object({
@@ -81,8 +82,22 @@ const ApplyNow = () => {
 
   const onSubmit = async (data: FormData) => {
     try {
-      // Simulate form submission
-      console.log("Form data:", data);
+      const { error } = await supabase
+        .from('applications')
+        .insert({
+          full_name: data.fullName,
+          email: data.email,
+          phone: data.phone,
+          program: data.program,
+          destination: data.destination,
+          education_level: data.currentEducation,
+          budget_range: data.budget,
+          message: data.message || null
+        });
+
+      if (error) {
+        throw error;
+      }
       
       toast({
         title: "Application Submitted Successfully!",
@@ -91,6 +106,7 @@ const ApplyNow = () => {
       
       setIsSubmitted(true);
     } catch (error) {
+      console.error("Error submitting application:", error);
       toast({
         title: "Submission Failed",
         description: "Please try again or contact us directly.",

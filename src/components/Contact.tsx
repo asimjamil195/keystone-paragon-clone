@@ -1,7 +1,14 @@
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 import { 
   MapPin, 
   Phone, 
@@ -12,7 +19,60 @@ import {
   Facebook
 } from "lucide-react";
 
+const contactFormSchema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters"),
+  email: z.string().email("Please enter a valid email address"),
+  message: z.string().min(10, "Message must be at least 10 characters")
+});
+
+type ContactFormData = z.infer<typeof contactFormSchema>;
+
 const Contact = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
+
+  const form = useForm<ContactFormData>({
+    resolver: zodResolver(contactFormSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      message: ""
+    }
+  });
+
+  const onSubmit = async (data: ContactFormData) => {
+    setIsSubmitting(true);
+    try {
+      const { error } = await supabase
+        .from('contact_messages')
+        .insert({
+          name: data.name,
+          email: data.email,
+          message: data.message
+        });
+
+      if (error) {
+        throw error;
+      }
+
+      toast({
+        title: "Message Sent Successfully!",
+        description: "Thank you for reaching out. We'll get back to you within 24 hours."
+      });
+      
+      form.reset();
+    } catch (error) {
+      console.error("Error submitting contact message:", error);
+      toast({
+        title: "Failed to Send Message",
+        description: "Please try again or contact us directly.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   const contactInfo = [
     {
       icon: Phone,
@@ -127,44 +187,73 @@ const Contact = () => {
                   Fill out the form below and we'll get back to you within 24 hours.
                 </p>
               </CardHeader>
-              <CardContent className="space-y-6">
-                <div>
-                  <label className="text-sm font-medium text-foreground mb-2 block">
-                    Name
-                  </label>
-                  <Input placeholder="Your full name" className="transition-all duration-300 focus:shadow-card" />
-                </div>
+              <CardContent>
+                <Form {...form}>
+                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                    <FormField
+                      control={form.control}
+                      name="name"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Name *</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Your full name" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
 
-                <div>
-                  <label className="text-sm font-medium text-foreground mb-2 block">
-                    Email
-                  </label>
-                  <Input 
-                    type="email" 
-                    placeholder="your.email@example.com" 
-                    className="transition-all duration-300 focus:shadow-card" 
-                  />
-                </div>
+                    <FormField
+                      control={form.control}
+                      name="email"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Email *</FormLabel>
+                          <FormControl>
+                            <Input 
+                              type="email" 
+                              placeholder="your.email@example.com" 
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
 
-                <div>
-                  <label className="text-sm font-medium text-foreground mb-2 block">
-                    Message
-                  </label>
-                  <Textarea 
-                    placeholder="Tell us about your study abroad goals and how we can help..."
-                    rows={4}
-                    className="transition-all duration-300 focus:shadow-card"
-                  />
-                </div>
+                    <FormField
+                      control={form.control}
+                      name="message"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Message *</FormLabel>
+                          <FormControl>
+                            <Textarea 
+                              placeholder="Tell us about your study abroad goals and how we can help..."
+                              rows={4}
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
 
-                <Button className="w-full gradient-primary hover:shadow-glow transition-all duration-300 group">
-                  <Send className="w-5 h-5 mr-2 group-hover:translate-x-1 transition-transform" />
-                  Send Message
-                </Button>
+                    <Button 
+                      type="submit" 
+                      className="w-full gradient-primary hover:shadow-glow transition-all duration-300 group"
+                      disabled={isSubmitting}
+                    >
+                      <Send className="w-5 h-5 mr-2 group-hover:translate-x-1 transition-transform" />
+                      {isSubmitting ? "Sending..." : "Send Message"}
+                    </Button>
 
-                <p className="text-xs text-muted-foreground text-center">
-                  By submitting this form, you agree to our privacy policy and terms of service.
-                </p>
+                    <p className="text-xs text-muted-foreground text-center">
+                      By submitting this form, you agree to our privacy policy and terms of service.
+                    </p>
+                  </form>
+                </Form>
               </CardContent>
             </Card>
           </div>

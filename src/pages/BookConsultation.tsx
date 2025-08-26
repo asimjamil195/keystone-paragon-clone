@@ -11,6 +11,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 import { Calendar, Phone, CheckCircle } from "lucide-react";
 const formSchema = z.object({
   fullName: z.string().min(2, "Full name must be at least 2 characters"),
@@ -41,13 +42,28 @@ const BookConsultation = () => {
   const consultationTypes = ["General Study Abroad Consultation", "University Selection Guidance", "Scholarship Information", "Visa Application Support", "Career Counseling"];
   const onSubmit = async (data: FormData) => {
     try {
-      console.log("Consultation booking:", data);
+      const { error } = await supabase
+        .from('consultation_bookings')
+        .insert({
+          full_name: data.fullName,
+          email: data.email,
+          phone: data.phone,
+          preferred_time: data.preferredTime,
+          consultation_type: data.consultationType,
+          message: data.message || null
+        });
+
+      if (error) {
+        throw error;
+      }
+
       toast({
         title: "Consultation Booked Successfully!",
         description: "We'll contact you within 2 hours to confirm your appointment."
       });
       setIsSubmitted(true);
     } catch (error) {
+      console.error("Error submitting consultation booking:", error);
       toast({
         title: "Booking Failed",
         description: "Please try again or call us directly.",
