@@ -30,7 +30,7 @@ const Header = () => {
           <div className="flex justify-between items-center py-4 rounded-md bg-gray-50">
             {/* Logo */}
             <Link to="/" className="flex items-center space-x-3 group">
-              <img src="/lovable-uploads/479c495f-70ae-4084-a8b1-3dedd7527673.png" alt="Keystone Consultants Pvt. Ltd." className="logo transition-transform duration-300 group-hover:scale-105" />
+              <img src="/lovable-uploads/5d1a862f-eec9-44f5-aa24-d3cc2bbd01c2.png" alt="Keystone Consultants Pvt. Ltd." className="logo transition-transform duration-300 group-hover:scale-105" />
               
             </Link>
 
