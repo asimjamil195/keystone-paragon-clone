@@ -254,4 +254,20 @@
   .transition-bounce {
     transition: var(--transition-bounce);
   }
+
+  /* Logo Styling */
+  .logo {
+    width: 558px;
+    height: auto; /* keeps proportions */
+    max-height: 129px;
+  }
+
+  /* Responsive for mobile */
+  @media (max-width: 768px) {
+    .logo {
+      width: 300px;
+      height: auto;
+      max-height: 70px;
+    }
+  }
 }
