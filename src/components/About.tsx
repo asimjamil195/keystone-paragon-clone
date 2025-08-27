@@ -60,8 +60,8 @@ const About = () => {
                   key={stat.label} 
                   className={`text-center transition-all duration-500 ${
                     visibleItems.has(index) 
-                      ? 'animate-gentle-rise opacity-100 transform translate-y-0' 
-                      : 'opacity-0 transform translate-y-4'
+                   ? 'animate__animated animate__fadeInUp opacity-100' 
+                      : 'opacity-0'
                   }`}
                 >
                   <div className="flex items-center justify-center w-12 h-12 mx-auto mb-3 gradient-primary rounded-lg">

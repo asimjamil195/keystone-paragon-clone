@@ -54,8 +54,8 @@ const WhyChooseUs = () => {
               key={feature.title}
               className={`transition-all duration-500 ${
                 visibleItems.has(index) 
-                  ? 'animate-block-up opacity-100 transform translate-y-0' 
-                  : 'opacity-0 transform translate-y-6'
+                  ? 'animate__animated animate__fadeInUp opacity-100' 
+                  : 'opacity-0'
               }`}
             >
               <AnimatedCard 

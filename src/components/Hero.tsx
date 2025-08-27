@@ -19,7 +19,7 @@ const Hero = () => {
               </div>
               <div className="relative z-10 container mx-auto px-4 py-20 min-h-screen flex items-center justify-center">
                 <div className="max-w-4xl mx-auto text-center">
-                  <div className="animate-slide-down">
+                  <div className="animate__animated animate__fadeInUp">
                     <span className="inline-block px-6 py-3 bg-accent/10 rounded-full mb-8 text-sm uppercase tracking-wider text-zinc-100 font-bold">
                       Educational Consultant
                     </span>
@@ -47,7 +47,7 @@ const Hero = () => {
               </div>
               <div className="relative z-10 container mx-auto px-4 py-20 min-h-screen flex items-center justify-center">
                 <div className="max-w-4xl mx-auto text-center">
-                  <div className="animate-slide-down">
+                  <div className="animate__animated animate__fadeInUp">
                     <span className="inline-block px-6 py-3 bg-accent/10 rounded-full text-sm mb-8 uppercase tracking-wider font-bold text-zinc-100">
                       Our Services
                     </span>
@@ -85,7 +85,7 @@ const Hero = () => {
               </div>
               <div className="relative z-10 container mx-auto px-4 py-20 min-h-screen flex items-center justify-center">
                 <div className="max-w-4xl mx-auto text-center">
-                  <div className="animate-slide-down">
+                  <div className="animate__animated animate__fadeInUp">
                     <span className="inline-block px-6 py-3 bg-accent/10 rounded-full mb-8 text-sm uppercase tracking-wider font-bold text-zinc-100">
                       Study Destinations
                     </span>

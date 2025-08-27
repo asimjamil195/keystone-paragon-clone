@@ -54,7 +54,7 @@ const Services = () => {
     <section id="services" className="py-20">
       <div className="container mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-16 animate-block-up">
+        <div className="text-center mb-16 animate__animated animate__fadeInUp">
           <span className="text-primary font-semibold text-sm uppercase tracking-wider mb-2 block">
             Our Services
           </span>
@@ -72,7 +72,7 @@ const Services = () => {
           {services.map((service, index) => (
             <Card 
               key={service.title}
-              className="group hover:shadow-lg transition-all duration-300 animate-gentle-rise border-border/50 hover:border-primary/20 hover:-translate-y-1"
+              className="group hover:shadow-lg transition-all duration-300 animate__animated animate__fadeInUp border-border/50 hover:border-primary/20 hover:-translate-y-1"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <CardHeader className="pb-4">
@@ -110,7 +110,7 @@ const Services = () => {
         </div>
 
         {/* CTA Section */}
-        <div className="text-center animate-subtle-lift">
+        <div className="text-center animate__animated animate__fadeInUp">
           <div className="gradient-hero rounded-2xl p-12 shadow-elegant">
             <h3 className="text-3xl font-bold text-white mb-4">
               Ready to Start Your Study Abroad Journey?

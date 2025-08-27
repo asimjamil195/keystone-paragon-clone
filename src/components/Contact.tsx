@@ -100,7 +100,7 @@ const Contact = () => {
     <section id="contact" className="py-20 bg-secondary/30">
       <div className="container mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-16 animate-block-up">
+        <div className="text-center mb-16 animate__animated animate__fadeInUp">
           <span className="text-primary font-semibold text-sm uppercase tracking-wider mb-2 block">
             Get In Touch
           </span>
@@ -115,7 +115,7 @@ const Contact = () => {
 
         <div className="grid lg:grid-cols-2 gap-16">
           {/* Contact Information */}
-          <div className="space-y-8 animate-gentle-rise">
+          <div className="space-y-8 animate__animated animate__fadeInUp">
             <div>
               <h3 className="text-2xl font-bold text-foreground mb-6">
                 Connect With Our Education Experts
@@ -130,7 +130,7 @@ const Contact = () => {
               {contactInfo.map((info, index) => (
                 <Card 
                   key={info.title}
-                  className="hover:shadow-lg transition-all duration-300 animate-subtle-lift border-border/50 hover:border-primary/20 hover:-translate-y-1"
+                  className="hover:shadow-lg transition-all duration-300 animate__animated animate__fadeInUp border-border/50 hover:border-primary/20 hover:-translate-y-1"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <CardHeader className="pb-3">
@@ -179,7 +179,7 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="animate-subtle-lift" style={{ animationDelay: "0.2s" }}>
+          <div className="animate__animated animate__fadeInUp" style={{ animationDelay: "0.2s" }}>
             <Card className="shadow-elegant">
               <CardHeader>
                 <CardTitle className="text-2xl font-bold text-foreground">

@@ -23,10 +23,10 @@ export const ScrollReveal = ({
   return (
     <div
       ref={ref}
-      className={`transition-all duration-1000 ${className} ${
+      className={`${className} ${
         isVisible 
-          ? `animate-${animation}` 
-          : 'opacity-0 transform translate-y-8'
+          ? 'animate__animated animate__fadeInUp' 
+          : 'opacity-0'
       }`}
       style={{
         animationDelay: isVisible ? `${delay}ms` : '0ms',

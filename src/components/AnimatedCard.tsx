@@ -41,7 +41,7 @@ export const AnimatedCard = ({
   return (
     <Card
       className={`
-        transition-all duration-300 cursor-pointer
+        animate__animated animate__fadeInUp transition-all duration-300 cursor-pointer
         ${getHoverClasses()}
         ${getClickClasses()}
         ${className}
