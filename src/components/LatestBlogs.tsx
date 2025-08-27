@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Calendar, ArrowRight, BookOpen } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const LatestBlogs = () => {
   const blogs = [
@@ -69,43 +70,47 @@ const LatestBlogs = () => {
         <div className="relative">
           <div className="flex space-x-6 animate-scroll-left">
             {blogs.concat(blogs).map((blog, index) => (
-              <Card key={`${blog.id}-${index}`} className="min-w-[350px] group hover:shadow-elegant transition-all duration-500 hover:-translate-y-2 bg-background/50 backdrop-blur-sm border-primary/10 hover:border-primary/30">
-                <CardHeader className="pb-3">
-                  <div className="flex items-center justify-between mb-3">
-                    <Badge variant="secondary" className="text-xs font-medium">
-                      {blog.category}
-                    </Badge>
-                    <div className="flex items-center text-xs text-muted-foreground">
-                      <Calendar className="w-3 h-3 mr-1" />
-                      {new Date(blog.date).toLocaleDateString()}
+              <Link key={`${blog.id}-${index}`} to={`/blog/${blog.id}`}>
+                <Card className="min-w-[350px] group hover:shadow-elegant transition-all duration-500 hover:-translate-y-2 bg-background/50 backdrop-blur-sm border-primary/10 hover:border-primary/30 cursor-pointer">
+                  <CardHeader className="pb-3">
+                    <div className="flex items-center justify-between mb-3">
+                      <Badge variant="secondary" className="text-xs font-medium">
+                        {blog.category}
+                      </Badge>
+                      <div className="flex items-center text-xs text-muted-foreground">
+                        <Calendar className="w-3 h-3 mr-1" />
+                        {new Date(blog.date).toLocaleDateString()}
+                      </div>
                     </div>
-                  </div>
-                  <CardTitle className="text-lg font-bold leading-tight group-hover:text-primary transition-colors duration-300">
-                    {blog.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
-                    {blog.excerpt}
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs text-muted-foreground font-medium">
-                      {blog.readTime}
-                    </span>
-                    <Button variant="ghost" size="sm" className="group/btn p-2 h-auto">
-                      <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
+                    <CardTitle className="text-lg font-bold leading-tight group-hover:text-primary transition-colors duration-300">
+                      {blog.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
+                      {blog.excerpt}
+                    </p>
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs text-muted-foreground font-medium">
+                        {blog.readTime}
+                      </span>
+                      <Button variant="ghost" size="sm" className="group/btn p-2 h-auto">
+                        <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
         </div>
 
         <div className="text-center mt-12 animate-fade-up" style={{ animationDelay: "0.3s" }}>
-          <Button size="lg" variant="outline" className="group transition-all duration-300 hover:bg-primary hover:text-primary-foreground">
-            View All Blog Posts
-            <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+          <Button size="lg" variant="outline" className="group transition-all duration-300 hover:bg-primary hover:text-primary-foreground" asChild>
+            <Link to="/blog">
+              View All Blog Posts
+              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            </Link>
           </Button>
         </div>
       </div>
