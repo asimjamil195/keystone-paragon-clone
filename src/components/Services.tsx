@@ -1,60 +1,42 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { 
-  UserCheck, 
-  GraduationCap, 
-  FileText, 
-  Award, 
-  BookOpen, 
-  Plane,
-  ArrowRight 
-} from "lucide-react";
-
+import { UserCheck, GraduationCap, FileText, Award, BookOpen, Plane, ArrowRight } from "lucide-react";
 const Services = () => {
-  const services = [
-    {
-      icon: UserCheck,
-      title: "Personalized Career & Education Counselling",
-      description: "One-on-one guidance to help you choose the right academic path and career direction.",
-      features: ["Career Assessment", "Goal Setting", "Academic Planning"],
-    },
-    {
-      icon: GraduationCap,
-      title: "University & Programme Selection",
-      description: "Expert advice on selecting the best universities and programs that match your profile.",
-      features: ["University Matching", "Program Comparison", "Admission Requirements"],
-    },
-    {
-      icon: FileText,
-      title: "Application Assistance",
-      description: "Complete support with university applications, essays, and documentation.",
-      features: ["Application Forms", "Personal Statements", "Document Review"],
-    },
-    {
-      icon: Award,
-      title: "Scholarship & Financial Aid Guidance",
-      description: "Help you find and apply for scholarships and financial aid opportunities.",
-      features: ["Scholarship Research", "Application Support", "Financial Planning"],
-    },
-    {
-      icon: BookOpen,
-      title: "Standardised Test Preparation",
-      description: "Comprehensive preparation for IELTS, SAT, GRE, GMAT and other required tests.",
-      features: ["IELTS Training", "SAT/GRE/GMAT Prep", "Mock Tests"],
-    },
-    {
-      icon: Plane,
-      title: "Visa & Immigration Support",
-      description: "Complete visa application assistance and pre-departure guidance.",
-      features: ["Visa Documentation", "Interview Preparation", "Pre-departure Briefing"],
-    },
-  ];
-
-  return (
-    <section id="services" className="py-20">
+  const services = [{
+    icon: UserCheck,
+    title: "Personalized Career & Education Counselling",
+    description: "One-on-one guidance to help you choose the right academic path and career direction.",
+    features: ["Career Assessment", "Goal Setting", "Academic Planning"]
+  }, {
+    icon: GraduationCap,
+    title: "University & Programme Selection",
+    description: "Expert advice on selecting the best universities and programs that match your profile.",
+    features: ["University Matching", "Program Comparison", "Admission Requirements"]
+  }, {
+    icon: FileText,
+    title: "Application Assistance",
+    description: "Complete support with university applications, essays, and documentation.",
+    features: ["Application Forms", "Personal Statements", "Document Review"]
+  }, {
+    icon: Award,
+    title: "Scholarship & Financial Aid Guidance",
+    description: "Help you find and apply for scholarships and financial aid opportunities.",
+    features: ["Scholarship Research", "Application Support", "Financial Planning"]
+  }, {
+    icon: BookOpen,
+    title: "Standardised Test Preparation",
+    description: "Comprehensive preparation for IELTS, SAT, GRE, GMAT and other required tests.",
+    features: ["IELTS Training", "SAT/GRE/GMAT Prep", "Mock Tests"]
+  }, {
+    icon: Plane,
+    title: "Visa & Immigration Support",
+    description: "Complete visa application assistance and pre-departure guidance.",
+    features: ["Visa Documentation", "Interview Preparation", "Pre-departure Briefing"]
+  }];
+  return <section id="services" className="py-20">
       <div className="container mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-16 animate__animated animate__fadeInUp">
+        <div className="text-center mb-16 animate-fade-up">
           <span className="text-primary font-semibold text-sm uppercase tracking-wider mb-2 block">
             Our Services
           </span>
@@ -69,14 +51,11 @@ const Services = () => {
 
         {/* Services Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {services.map((service, index) => (
-            <Card 
-              key={service.title}
-              className="group hover:shadow-lg transition-all duration-300 animate__animated animate__fadeInUp border-border/50 hover:border-primary/20 hover:-translate-y-1"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
+          {services.map((service, index) => <Card key={service.title} className="group hover:shadow-elegant transition-all duration-300 animate-scale-in border-border/50 hover:border-primary/20 hover:-translate-y-2" style={{
+          animationDelay: `${index * 0.1}s`
+        }}>
               <CardHeader className="pb-4">
-                <div className="w-14 h-14 gradient-primary rounded-lg flex items-center justify-center mb-4 transition-all duration-300">
+                <div className="w-14 h-14 gradient-primary rounded-lg flex items-center justify-center mb-4 group-hover:shadow-glow transition-all duration-300 group-hover:scale-110">
                   <service.icon className="w-7 h-7 text-primary-foreground" />
                 </div>
                 <CardTitle className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
@@ -89,46 +68,25 @@ const Services = () => {
                 </p>
                 
                 <div className="space-y-2 mb-6">
-                  {service.features.map((feature) => (
-                    <div key={feature} className="flex items-center text-sm">
+                  {service.features.map(feature => <div key={feature} className="flex items-center text-sm">
                       <div className="w-1.5 h-1.5 bg-accent rounded-full mr-3"></div>
                       <span className="text-foreground">{feature}</span>
-                    </div>
-                  ))}
+                    </div>)}
                 </div>
 
-                <Button 
-                  variant="ghost" 
-                  className="w-full group-hover:bg-primary/5 transition-colors p-0 h-auto justify-start font-semibold text-primary"
-                >
+                <Button variant="ghost" className="w-full group-hover:bg-primary/5 transition-colors p-0 h-auto justify-start font-semibold text-primary">
                   Learn More
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </CardContent>
-            </Card>
-          ))}
+            </Card>)}
         </div>
 
         {/* CTA Section */}
-        <div className="text-center animate__animated animate__fadeInUp">
-          <div className="gradient-hero rounded-2xl p-12 shadow-elegant">
-            <h3 className="text-3xl font-bold text-white mb-4">
-              Ready to Start Your Study Abroad Journey?
-            </h3>
-            <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
-              Let our expert counsellors guide you through every step of the process and help you achieve your academic dreams.
-            </p>
-            <Button 
-              size="lg"
-              className="bg-accent hover:bg-accent-light text-accent-foreground font-semibold px-8 hover:shadow-lg transition-all duration-300"
-            >
-              Schedule Free Consultation
-            </Button>
-          </div>
+        <div className="text-center animate-fade-up">
+          
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Services;
