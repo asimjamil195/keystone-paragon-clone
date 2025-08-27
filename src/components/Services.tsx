@@ -54,7 +54,7 @@ const Services = () => {
     <section id="services" className="py-20">
       <div className="container mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-16 animate-fade-up">
+        <div className="text-center mb-16 animate-block-up">
           <span className="text-primary font-semibold text-sm uppercase tracking-wider mb-2 block">
             Our Services
           </span>
@@ -72,11 +72,11 @@ const Services = () => {
           {services.map((service, index) => (
             <Card 
               key={service.title}
-              className="group hover:shadow-elegant transition-all duration-300 animate-scale-in border-border/50 hover:border-primary/20 hover:-translate-y-2"
+              className="group hover:shadow-lg transition-all duration-300 animate-gentle-rise border-border/50 hover:border-primary/20 hover:-translate-y-1"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <CardHeader className="pb-4">
-                <div className="w-14 h-14 gradient-primary rounded-lg flex items-center justify-center mb-4 group-hover:shadow-glow transition-all duration-300 group-hover:scale-110">
+                <div className="w-14 h-14 gradient-primary rounded-lg flex items-center justify-center mb-4 transition-all duration-300">
                   <service.icon className="w-7 h-7 text-primary-foreground" />
                 </div>
                 <CardTitle className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
@@ -110,7 +110,7 @@ const Services = () => {
         </div>
 
         {/* CTA Section */}
-        <div className="text-center animate-fade-up">
+        <div className="text-center animate-subtle-lift">
           <div className="gradient-hero rounded-2xl p-12 shadow-elegant">
             <h3 className="text-3xl font-bold text-white mb-4">
               Ready to Start Your Study Abroad Journey?
@@ -120,7 +120,7 @@ const Services = () => {
             </p>
             <Button 
               size="lg"
-              className="bg-accent hover:bg-accent-light text-accent-foreground font-semibold px-8 hover:shadow-glow transition-all duration-300"
+              className="bg-accent hover:bg-accent-light text-accent-foreground font-semibold px-8 hover:shadow-lg transition-all duration-300"
             >
               Schedule Free Consultation
             </Button>

@@ -4,15 +4,15 @@ import { Card } from '@/components/ui/card';
 interface AnimatedCardProps {
   children: React.ReactNode;
   className?: string;
-  hoverAnimation?: 'scale' | 'float' | 'glow' | 'wobble' | 'rotate';
-  clickAnimation?: 'shake' | 'bounce' | 'pulse';
+  hoverAnimation?: 'scale' | 'lift';
+  clickAnimation?: 'none';
 }
 
 export const AnimatedCard = ({
   children,
   className = '',
   hoverAnimation = 'scale',
-  clickAnimation = 'bounce',
+  clickAnimation = 'none',
 }: AnimatedCardProps) => {
   const [isClicked, setIsClicked] = useState(false);
 
@@ -26,33 +26,16 @@ export const AnimatedCard = ({
   const getHoverClasses = () => {
     switch (hoverAnimation) {
       case 'scale':
-        return 'hover:scale-105 hover:shadow-lg';
-      case 'float':
-        return 'hover:animate-float';
-      case 'glow':
-        return 'hover:animate-pulse-glow';
-      case 'wobble':
-        return 'hover:animate-wobble';
-      case 'rotate':
-        return 'hover:rotate-2';
+        return 'hover:scale-[1.02] hover:shadow-lg';
+      case 'lift':
+        return 'hover:-translate-y-1 hover:shadow-lg';
       default:
         return '';
     }
   };
 
   const getClickClasses = () => {
-    if (!isClicked) return '';
-    
-    switch (clickAnimation) {
-      case 'shake':
-        return 'animate-shake';
-      case 'bounce':
-        return 'animate-bounce-in';
-      case 'pulse':
-        return 'animate-pulse';
-      default:
-        return '';
-    }
+    return '';
   };
 
   return (

@@ -2,7 +2,7 @@ import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 
 interface ScrollRevealProps {
   children: React.ReactNode;
-  animation?: 'fade-up' | 'fade-down' | 'fade-left' | 'fade-right' | 'scale-in' | 'bounce-in' | 'rotate-in' | 'flip-x' | 'flip-y' | 'roll-in' | 'zoom-in';
+  animation?: 'block-up' | 'gentle-rise' | 'subtle-lift';
   delay?: number;
   className?: string;
   threshold?: number;
@@ -10,7 +10,7 @@ interface ScrollRevealProps {
 
 export const ScrollReveal = ({
   children,
-  animation = 'fade-up',
+  animation = 'block-up',
   delay = 0,
   className = '',
   threshold = 0.1,

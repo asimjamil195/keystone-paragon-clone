@@ -34,7 +34,7 @@ const WhyChooseUs = () => {
     <section className="py-20 bg-secondary/30">
       <div className="container mx-auto px-4">
         {/* Header */}
-        <ScrollReveal animation="fade-up" className="text-center mb-16">
+        <ScrollReveal animation="block-up" className="text-center mb-16">
           <span className="text-primary font-semibold text-sm uppercase tracking-wider mb-2 block">
             Why Choose Us
           </span>
@@ -52,21 +52,20 @@ const WhyChooseUs = () => {
           {features.map((feature, index) => (
             <div
               key={feature.title}
-              className={`transition-all duration-700 ${
+              className={`transition-all duration-500 ${
                 visibleItems.has(index) 
-                  ? 'animate-fade-up opacity-100 transform translate-y-0' 
-                  : 'opacity-0 transform translate-y-8'
+                  ? 'animate-block-up opacity-100 transform translate-y-0' 
+                  : 'opacity-0 transform translate-y-6'
               }`}
             >
               <AnimatedCard 
-                hoverAnimation="float"
-                clickAnimation="bounce"
+                hoverAnimation="lift"
                 className="h-full border-border/50 hover:border-primary/20 group overflow-hidden relative"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <CardContent className="p-8 text-center relative z-10">
-                  <div className="w-16 h-16 gradient-primary rounded-full flex items-center justify-center mb-6 mx-auto group-hover:shadow-glow transition-all duration-500 group-hover:scale-125 group-hover:animate-pulse-glow">
-                    <feature.icon className="w-8 h-8 text-primary-foreground group-hover:animate-heartbeat" />
+                  <div className="w-16 h-16 gradient-primary rounded-full flex items-center justify-center mb-6 mx-auto transition-all duration-300">
+                    <feature.icon className="w-8 h-8 text-primary-foreground" />
                   </div>
                   <h3 className="text-xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors duration-300">
                     {feature.title}

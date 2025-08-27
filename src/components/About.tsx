@@ -36,7 +36,7 @@ const About = () => {
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Content */}
-          <ScrollReveal animation="fade-right" className="">
+          <ScrollReveal animation="block-up" className="">
             <span className="text-primary font-semibold text-sm uppercase tracking-wider mb-2 block">
               About Keystone
             </span>
@@ -58,14 +58,14 @@ const About = () => {
               {stats.map((stat, index) => (
                 <div 
                   key={stat.label} 
-                  className={`text-center transition-all duration-700 ${
+                  className={`text-center transition-all duration-500 ${
                     visibleItems.has(index) 
-                      ? 'animate-bounce-in opacity-100 transform scale-100' 
-                      : 'opacity-0 transform scale-75'
+                      ? 'animate-gentle-rise opacity-100 transform translate-y-0' 
+                      : 'opacity-0 transform translate-y-4'
                   }`}
                 >
-                  <div className="flex items-center justify-center w-12 h-12 mx-auto mb-3 gradient-primary rounded-lg group hover:animate-pulse-glow">
-                    <stat.icon className="w-6 h-6 text-primary-foreground group-hover:animate-heartbeat" />
+                  <div className="flex items-center justify-center w-12 h-12 mx-auto mb-3 gradient-primary rounded-lg">
+                    <stat.icon className="w-6 h-6 text-primary-foreground" />
                   </div>
                   <AnimatedCounter 
                     end={stat.number}
@@ -77,25 +77,25 @@ const About = () => {
               ))}
             </div>
 
-            <ScrollReveal animation="scale-in" delay={200}>
-              <Button className="gradient-primary hover:shadow-glow transition-all duration-300 hover:animate-pulse-glow">
+            <ScrollReveal animation="subtle-lift" delay={200}>
+              <Button className="gradient-primary hover:shadow-lg transition-all duration-300">
                 Book Free Consultation
               </Button>
             </ScrollReveal>
           </ScrollReveal>
 
           {/* Image */}
-          <ScrollReveal animation="fade-left" delay={300} className="">
-            <Card className="overflow-hidden shadow-elegant hover:animate-float group">
+          <ScrollReveal animation="gentle-rise" delay={300} className="">
+            <Card className="overflow-hidden shadow-lg hover:shadow-xl group transition-shadow duration-300">
               <CardContent className="p-0">
                 <img 
                   src={teamImage} 
                   alt="Keystone Consultancy Team" 
-                  className="w-full h-[500px] object-cover group-hover:scale-105 transition-transform duration-700" 
+                  className="w-full h-[500px] object-cover group-hover:scale-105 transition-transform duration-500" 
                 />
                 <div className="p-8 gradient-hero">
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:animate-fade-up">Your Success, Our Mission</h3>
-                  <p className="text-white/90 group-hover:animate-fade-up" style={{ animationDelay: '100ms' }}>
+                  <h3 className="text-xl font-bold text-white mb-2">Your Success, Our Mission</h3>
+                  <p className="text-white/90">
                     Our dedicated team of education counsellors works tirelessly to turn your study abroad dreams into reality.
                   </p>
                 </div>
