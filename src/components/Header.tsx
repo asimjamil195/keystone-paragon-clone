@@ -44,13 +44,13 @@ const Header = () => {
       {/* Main Navigation */}
       <header className="bg-background border-b sticky top-0 z-50 shadow-sm">
         <div className="container mx-auto px-6">
-          <div className="flex justify-between items-center py-3">
+          <div className="flex justify-between items-center py-2">
             {/* Logo */}
             <Link to="/" className="flex items-center group">
               <img 
                 src="/lovable-uploads/213ef00d-72d5-4ba9-9991-66bee42816ca.png" 
                 alt="Keystone Consultants Pvt. Ltd." 
-                className="h-12 md:h-16 w-auto transition-transform duration-300 group-hover:scale-105" 
+                className="h-14 md:h-18 w-auto transition-transform duration-300 group-hover:scale-105" 
               />
             </Link>
 
