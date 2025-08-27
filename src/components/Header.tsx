@@ -48,9 +48,9 @@ const Header = () => {
             {/* Logo */}
             <Link to="/" className="flex items-center group">
               <img 
-                src="/lovable-uploads/9680bc2e-0b02-4b16-a021-028af5bacf18.png" 
+                src="/lovable-uploads/213ef00d-72d5-4ba9-9991-66bee42816ca.png" 
                 alt="Keystone Consultants Pvt. Ltd." 
-                className="h-24 md:h-28 w-auto max-w-xs transition-transform duration-300 group-hover:scale-105 shadow-sm" 
+                className="h-12 md:h-16 w-auto transition-transform duration-300 group-hover:scale-105" 
               />
             </Link>
 
