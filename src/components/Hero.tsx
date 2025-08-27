@@ -20,7 +20,7 @@ const Hero = () => {
               <div className="relative z-10 container mx-auto px-4 py-20 min-h-screen flex items-center justify-center">
                 <div className="max-w-4xl mx-auto text-center">
                   <div className="animate-slide-down">
-                    <span className="inline-block px-6 py-3 bg-accent/10 text-accent rounded-full font-semibold mb-8 text-sm uppercase tracking-wider">
+                    <span className="inline-block px-6 py-3 bg-accent/10 rounded-full mb-8 text-sm uppercase tracking-wider text-zinc-100 font-bold">
                       Educational Consultant
                     </span>
                     
