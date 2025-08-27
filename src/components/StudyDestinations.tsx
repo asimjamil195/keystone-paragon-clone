@@ -23,11 +23,6 @@ const StudyDestinations = () => {
       description: "Excellent education system with post-study work opportunities"
     },
     {
-      country: "Germany",
-      flag: "🇩🇪",
-      description: "Strong engineering programs and affordable education"
-    },
-    {
       country: "Turkey",
       flag: "🇹🇷",
       description: "Bridge between Europe and Asia with growing education sector"
