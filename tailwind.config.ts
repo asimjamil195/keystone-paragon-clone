@@ -105,20 +105,55 @@ export default {
 					'100%': { opacity: '1' }
 				},
 				'fade-up': {
-					'0%': { opacity: '0', transform: 'translateY(30px)' },
+					'0%': { opacity: '0', transform: 'translateY(15px)' },
 					'100%': { opacity: '1', transform: 'translateY(0)' }
 				},
 				'fade-down': {
-					'0%': { opacity: '0', transform: 'translateY(-30px)' },
+					'0%': { opacity: '0', transform: 'translateY(-15px)' },
 					'100%': { opacity: '1', transform: 'translateY(0)' }
 				},
 				'fade-left': {
-					'0%': { opacity: '0', transform: 'translateX(-30px)' },
+					'0%': { opacity: '0', transform: 'translateX(-15px)' },
 					'100%': { opacity: '1', transform: 'translateX(0)' }
 				},
 				'fade-right': {
-					'0%': { opacity: '0', transform: 'translateX(30px)' },
+					'0%': { opacity: '0', transform: 'translateX(15px)' },
 					'100%': { opacity: '1', transform: 'translateX(0)' }
+				},
+				// Subtle block animations
+				'block-up': {
+					'0%': { 
+						opacity: '0', 
+						transform: 'translateY(20px) scale(0.95)' 
+					},
+					'100%': { 
+						opacity: '1', 
+						transform: 'translateY(0) scale(1)' 
+					}
+				},
+				'block-cascade': {
+					'0%': { 
+						opacity: '0', 
+						transform: 'translateY(25px) rotateX(15deg)' 
+					},
+					'100%': { 
+						opacity: '1', 
+						transform: 'translateY(0) rotateX(0deg)' 
+					}
+				},
+				'gentle-rise': {
+					'0%': { 
+						opacity: '0', 
+						transform: 'translateY(10px) scale(0.98)' 
+					},
+					'60%': { 
+						opacity: '0.8', 
+						transform: 'translateY(-2px) scale(1.01)' 
+					},
+					'100%': { 
+						opacity: '1', 
+						transform: 'translateY(0) scale(1)' 
+					}
 				},
 				// Slide Animations
 				'slide-up': {
@@ -126,8 +161,18 @@ export default {
 					'100%': { transform: 'translateY(0)' }
 				},
 				'slide-down': {
-					'0%': { opacity: '0', transform: 'translateY(-50px)' },
+					'0%': { opacity: '0', transform: 'translateY(-20px)' },
 					'100%': { opacity: '1', transform: 'translateY(0)' }
+				},
+				'slide-subtle': {
+					'0%': { 
+						opacity: '0', 
+						transform: 'translateY(12px)' 
+					},
+					'100%': { 
+						opacity: '1', 
+						transform: 'translateY(0)' 
+					}
 				},
 				'slide-in-left': {
 					'0%': { transform: 'translateX(-100%)' },
@@ -139,12 +184,22 @@ export default {
 				},
 				// Scale Animations
 				'scale-in': {
-					'0%': { opacity: '0', transform: 'scale(0.9)' },
+					'0%': { opacity: '0', transform: 'scale(0.96)' },
 					'100%': { opacity: '1', transform: 'scale(1)' }
 				},
 				'scale-up': {
 					'0%': { transform: 'scale(1)' },
-					'100%': { transform: 'scale(1.05)' }
+					'100%': { transform: 'scale(1.02)' }
+				},
+				'gentle-scale': {
+					'0%': { 
+						opacity: '0', 
+						transform: 'scale(0.97) translateY(8px)' 
+					},
+					'100%': { 
+						opacity: '1', 
+						transform: 'scale(1) translateY(0)' 
+					}
 				},
 				// Bounce & Float
 				'bounce-in': {
@@ -249,22 +304,29 @@ export default {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				
-				// Fade Animations
-				'fade-in': 'fade-in 0.5s ease-out',
-				'fade-up': 'fade-up 0.6s ease-out',
-				'fade-down': 'fade-down 0.6s ease-out',
-				'fade-left': 'fade-left 0.6s ease-out',
-				'fade-right': 'fade-right 0.6s ease-out',
+				// Fade Animations - More Subtle
+				'fade-in': 'fade-in 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+				'fade-up': 'fade-up 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
+				'fade-down': 'fade-down 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
+				'fade-left': 'fade-left 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
+				'fade-right': 'fade-right 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
 				
-				// Slide Animations
-				'slide-up': 'slide-up 0.4s ease-out',
-				'slide-down': 'slide-down 0.8s ease-out',
-				'slide-in-left': 'slide-in-left 0.5s ease-out',
-				'slide-in-right': 'slide-in-right 0.5s ease-out',
+				// Block Animations - Subtle & Elegant
+				'block-up': 'block-up 0.6s cubic-bezier(0.4, 0, 0.2, 1)',
+				'block-cascade': 'block-cascade 0.7s cubic-bezier(0.4, 0, 0.2, 1)',
+				'gentle-rise': 'gentle-rise 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
 				
-				// Scale Animations
-				'scale-in': 'scale-in 0.4s ease-out',
-				'scale-up': 'scale-up 0.2s ease-out',
+				// Slide Animations - Smoother
+				'slide-up': 'slide-up 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+				'slide-down': 'slide-down 0.6s cubic-bezier(0.4, 0, 0.2, 1)',
+				'slide-subtle': 'slide-subtle 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
+				'slide-in-left': 'slide-in-left 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+				'slide-in-right': 'slide-in-right 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+				
+				// Scale Animations - Gentler
+				'scale-in': 'scale-in 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+				'scale-up': 'scale-up 0.15s cubic-bezier(0.4, 0, 0.2, 1)',
+				'gentle-scale': 'gentle-scale 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
 				
 				// Bounce & Float
 				'bounce-in': 'bounce-in 0.6s ease-out',
@@ -294,12 +356,18 @@ export default {
 				'zoom-in': 'zoom-in 0.5s ease-out',
 				'zoom-out': 'zoom-out 0.3s ease-out',
 				
-				// Delayed Animations (Stagger Effect)
-				'fade-up-delay-1': 'fade-up 0.6s ease-out 0.1s both',
-				'fade-up-delay-2': 'fade-up 0.6s ease-out 0.2s both',
-				'fade-up-delay-3': 'fade-up 0.6s ease-out 0.3s both',
-				'fade-up-delay-4': 'fade-up 0.6s ease-out 0.4s both',
-				'fade-up-delay-5': 'fade-up 0.6s ease-out 0.5s both',
+				// Staggered Block Animations - Elegant Cascade
+				'block-up-1': 'block-up 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.05s both',
+				'block-up-2': 'block-up 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.1s both',
+				'block-up-3': 'block-up 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.15s both',
+				'block-up-4': 'block-up 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both',
+				'block-up-5': 'block-up 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.25s both',
+				
+				// Gentle Cascade Effect
+				'gentle-rise-1': 'gentle-rise 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.1s both',
+				'gentle-rise-2': 'gentle-rise 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both',
+				'gentle-rise-3': 'gentle-rise 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.3s both',
+				'gentle-rise-4': 'gentle-rise 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.4s both',
 				
 				// Parallax
 				'parallax-slow': 'parallax-slow 10s linear infinite',
