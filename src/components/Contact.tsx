@@ -77,7 +77,7 @@ const Contact = () => {
     {
       icon: Phone,
       title: "Call Us",
-      details: ["+92 327 778 7888"],
+      details: ["0327 7787888"],
     },
     {
       icon: Mail,
@@ -160,9 +160,11 @@ const Contact = () => {
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Button>
               
-              <Button variant="outline" className="w-full hover:bg-primary/5 transition-colors">
-                <Facebook className="w-5 h-5 mr-2" />
-                Visit Facebook Page
+              <Button variant="outline" className="w-full hover:bg-primary/5 transition-colors" asChild>
+                <a href="https://www.facebook.com/profile.php?id=61567704159184" target="_blank" rel="noopener noreferrer">
+                  <Facebook className="w-5 h-5 mr-2" />
+                  Visit Facebook Page
+                </a>
               </Button>
             </div>
 

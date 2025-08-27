@@ -35,7 +35,7 @@ const Header = () => {
           <div className="flex items-center space-x-4 text-sm">
             <div className="flex items-center space-x-2">
               <Phone className="h-4 w-4" />
-              <span>UAN: (+92) 304 1110947</span>
+              <span>UAN: 0327 7787888</span>
             </div>
           </div>
         </div>

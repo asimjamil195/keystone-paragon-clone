@@ -51,7 +51,7 @@ const Footer = () => {
             {/* Social Links */}
             <div className="flex space-x-2">
               <a 
-                href="https://facebook.com/keystoneconsultants" 
+                href="https://www.facebook.com/profile.php?id=61567704159184" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
@@ -104,8 +104,7 @@ const Footer = () => {
               <div className="flex items-start">
                 <Phone className="w-4 h-4 mr-3 text-white mt-1 flex-shrink-0" />
                 <div className="text-white/80 text-sm">
-                  <div>+92 327 778 7888</div>
-                  <div>+92 300 020 3048</div>
+                  <div>0327 7787888</div>
                 </div>
               </div>
               <div className="flex items-start">
